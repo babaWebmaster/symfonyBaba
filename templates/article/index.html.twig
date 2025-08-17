@@ -1,0 +1,53 @@
+{# templates/article/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Articles{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <h1 class="mb-4">Nos Articles</h1>
+
+        {# Vérifie si la liste des articles est vide #}
+        {% if articles is empty %}
+            <p>Aucun article n'a été publié pour le moment.</p>
+        {% else %}
+            <div class="row">
+                {# Boucle sur chaque article dans la collection 'articles' #}
+                {% for article in articles %}
+                    <div class="col-md-4 mb-4"> {# Colonne pour la grille Bootstrap (3 articles par ligne sur les grands écrans) #}
+                        <div class="card h-100 shadow-sm"> {# h-100 pour que toutes les cartes aient la même hauteur #}
+                            {# Image de l'article (si vous en avez une) #}
+                            {# Si votre entité Article a une propriété pour une image (ex: 'imageFilename'), décommentez et adaptez cette partie #}
+                            {# Par exemple, si l'image est stockée dans 'public/uploads/article_images/' #}
+                            {# {% if article.imageFileName %}
+                                <img src="{{ asset('uploads/article_images/' ~ article.imageFileName) }}" class="card-img-top" alt="{{ article.title }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="{{ asset('images/default_article_thumbnail.jpg') }}" class="card-img-top" alt="Image par défaut" style="height: 200px; object-fit: cover;">
+                            {% endif %} #}
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">{{ article.title }}</h5>
+                                <p class="card-text text-muted small">
+                                    {# Afficher un extrait du contenu, en retirant les balises HTML et en le tronquant #}
+                                    
+                                </p>
+                                <div class="mt-auto"> {# Pousse le bouton vers le bas de la carte #}
+                                    <a href="{{ path('app_article_show', {'slug': article.slug}) }}" class="btn btn-primary btn-sm">Lire la suite</a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                {# Afficher la date de publication si le champ 'publishedAt' existe #}
+                                {# Vérifiez que la propriété publishedAt existe dans votre entité Article #}
+                                {% if article.publishedAt is not null %}
+                                    Publié le {{ article.publishedAt|date('d/m/Y') }}
+                                {% else %}
+                                    Date de publication non spécifiée
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

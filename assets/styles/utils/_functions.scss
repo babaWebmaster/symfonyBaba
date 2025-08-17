@@ -1,0 +1,5 @@
+// assets/styles/utils/_functions.scss
+
+@function get-rgba($color, $alpha) {
+    @return rgba($color, $alpha);
+}

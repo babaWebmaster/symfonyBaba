@@ -1,0 +1,21 @@
+{# templates/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Page d'Accueil de Mon Site{% endblock %} {# Titre de la page d'accueil #}
+
+{% block body %}
+     <h1>Bienvenue sur la Page d'Accueil !</h1>
+   
+    {% if image_data.found %} {# Vérifiez si l'image a été trouvée #}
+        <h2>Test de l'Image Builder :</h2>
+        <div style="max-width: 800px; margin: 20px auto; border: 1px solid #ddd; padding: 10px;">
+            <p>Image #{{ image_data.id }} (Nom original : {{ image_data.originalName }}) :</p>
+            {{ image_data.html|raw }} {# Affichez le HTML généré #}
+        </div>
+    {% else %}
+        <p>Aucune image trouvée pour le test ou l'ID spécifié.</p>
+    {% endif %}
+
+    <p>Le reste du contenu de votre page d'accueil...</p>
+{% endblock %}

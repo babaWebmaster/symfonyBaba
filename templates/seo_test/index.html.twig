@@ -1,0 +1,10 @@
+{# templates/seo_test/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de Test SEO Statique - Mon Site{% endblock %}
+
+{% block body %}
+    <h1>Ceci est la page de test SEO Statique</h1>
+    <p>Ce contenu est fixe et ne change pas. Nous utiliserons cette page pour définir des métadonnées et des schémas statiques.</p>
+    <p><a href="{{ path('app_home') }}">Retour à la page d'accueil</a></p>
+{% endblock %}

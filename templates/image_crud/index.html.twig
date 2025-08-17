@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Image index{% endblock %}
+
+{% block body %}
+    <h1>Image index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FileName</th>
+                <th>OriginalName</th>
+                <th>AltText</th>
+                <th>UpdatedAt</th>
+                <th>Formats</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+            <tr>
+                <td>{{ image.id }}</td>
+                <td>{{ image.fileName }}</td>
+                <td>{{ image.originalName }}</td>
+                <td>{{ image.altText }}</td>
+                <td>{{ image.updatedAt ? image.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ image.formats ? image.formats|json_encode : '' }}</td>
+                <td>
+                    <a href="{{ path('app_image_crud_show', {'id': image.id}) }}">show</a>
+                    <a href="{{ path('app_image_crud_edit', {'id': image.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_image_crud_new') }}">Create new</a>
+{% endblock %}

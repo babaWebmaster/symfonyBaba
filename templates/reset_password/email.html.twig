@@ -1,0 +1,13 @@
+<h1>baba top</h1>
+
+<p>To reset your password, please visit the following link</p>
+{# DUMP de la variable resetToken pour voir son contenu #}
+{{ dump(resetToken) }}
+
+{# DUMP de la fonction URL avec les paramètres corrects pour voir le lien généré #}
+{{ dump(url('app_reset_password', {token: resetToken.token})) }}
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+
+<p>This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+<p>Cheers!</p>

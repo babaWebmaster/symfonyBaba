@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# <<< CE BLOC EST LE SEUL ET UNIQUE ENDROIT POUR LE SEO GLOBAL >>> #}
+    {% block head_meta %}
+       {# Valeurs par défaut si seoPost n'est pas fourni ou n'a pas les données #}
+        <title>{% block title %}Mon Site Web{% endblock %}</title> {# Un block title pour le fallback #}
+        <meta name="description" content="Découvrez nos articles, services et bien plus.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ app.request.uri }}">
+        <meta property="og:image" content="{{ asset('path/to/default/og-image.jpg') }}"> {# Remplacez par votre image par défaut #}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="{{ asset('path/to/default/twitter-image.jpg') }}"> {# Remplacez par votre image par défaut #} 
+
+    {% if seoPost is defined and seoPost %} 
+        {# --- APPLICATION DES DONNÉES SEO SI seoPost EST PRÉSENT ET VALIDE --- #}
+        {% if seoPost and seoPost.seoMetadata %}
+            {# Titre : prend la priorité sur le block('title') si renseigné #}
+            <title>{{ seoPost.seoMetadata.title ?: block('title') }}</title>
+            <meta name="description" content="{{ seoPost.seoMetadata.description ?: block('description') }}">
+
+            {# Open Graph Tags #}
+            <meta property="og:title" content="{{ seoPost.seoMetadata.ogTitle ?: seoPost.seoMetadata.title ?: block('title') }}">
+            <meta property="og:description" content="{{ seoPost.seoMetadata.ogDescription ?: seoPost.seoMetadata.description ?: block('description') }}">
+            {% if seoPost.seoMetadata.ogImage %}
+                <meta property="og:image" content="{{ seoPost.seoMetadata.ogImage }}">
+            {% endif %}
+
+            
+
+            {# Schema.org JSON-LD #}
+            {% if seoPost.seoMetadata.schemaJson %}
+                <script type="application/ld+json">
+                    {{ seoPost.seoMetadata.schemaJson|raw }}
+                </script>
+            {% endif %}
+        {% endif %}
+     {% endif %}
+    {% endblock %}
+    {# <<< FIN DU BLOC SEO PRINCIPAL >>> #}
+
+    {% block stylesheets %}{% endblock %}
+            {{ encore_entry_link_tags('appFront') }}
+    {% block javascripts %}{% endblock %}
+            {{ encore_entry_script_tags('app') }}
+</head>
+<body>
+
+      
+
+<nav id="navMenuPrincipal" class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">{{ logoHtml|raw }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMainMenu">
+      {{ knp_menu_render('main_menu', {
+        'currentClass': 'active',
+        'template': '@KnpMenu/menu.html.twig',
+                     }) }}
+    </div>
+  </div>
+</nav>

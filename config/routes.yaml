@@ -3,3 +3,10 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+# --- VOTRE BLOC DE ROUTES ADMIN DOIT ÊTRE ICI, AU MÊME NIVEAU QUE 'controllers:' ---
+app_admin_secret_routes:
+    resource: '../src/Controller/Admin/BackOfficeController.php'
+    type: attribute
+    prefix: '/admin-baba-5487894613734'
+# --- FIN DE VOTRE BLOC DE ROUTES ADMIN ---

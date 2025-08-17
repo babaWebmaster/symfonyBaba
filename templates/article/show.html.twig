@@ -1,0 +1,9 @@
+{# templates/article/show.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %} {# Le titre de l'article pour le titre HTML par défaut #}
+
+{% block body %}
+    <h1>{{ article.title }}</h1>
+    
+{% endblock %}

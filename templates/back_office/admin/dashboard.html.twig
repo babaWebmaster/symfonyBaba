@@ -1,0 +1,24 @@
+{# templates/back_office/admin/dashboard.html.twig #}
+
+{% extends 'back_office/admin/base.html.twig' %} {# Assurez-vous que le chemin vers votre layout du BO est correct #}
+
+{% block title %}Tableau de Bord - Mon Back Office{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Bienvenue sur votre Tableau de Bord !</h1>
+        <p>C'est ici que vous verrez les statistiques et les informations clés.</p>
+        {# Ajoutez du contenu spécifique au tableau de bord ici #}
+        <div class="stats-cards">
+            <div class="card">
+                <h3>Utilisateurs Enregistrés</h3>
+                <p>1250</p> {# Exemple #}
+            </div>
+            <div class="card">
+                <h3>Connexions Échouées (24h)</h3>
+                <p>15</p> {# Exemple #}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{# templates/user/profile.html.twig #}
+{% extends 'back_office/admin/base.html.twig' %} {# Ou votre layout de back-office #}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block body %}
+    <h1>Mon Profil</h1>
+
+    <p><strong>Nom d'utilisateur :</strong> {{ user.username ?? 'Non défini' }}</p> {# Si vous avez une propriété username #}
+    <p><strong>Email :</strong> {{ user.email }}</p>
+
+    {# Lien pour changer le mot de passe (sera créé à l'étape suivante) #}
+    <a href="{{ path('app_user_change_password') }}" class="btn btn-primary">Changer mon mot de passe</a>
+
+{% endblock %}

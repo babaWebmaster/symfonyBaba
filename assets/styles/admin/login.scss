@@ -1,0 +1,23 @@
+body
+{
+    background-color: rgba(248, 244, 244, 0.288);
+}
+
+main
+{   display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    
+    form
+    {
+        .form-group
+        {
+            border:solid 2px #f5eaea;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: rgba(248, 244, 244, 0.288);
+        }
+    }
+
+}

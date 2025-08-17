@@ -1,0 +1,31 @@
+{# templates/admin/users.html.twig #}
+{% extends 'back_office/admin/base.html.twig' %}
+
+{% block title %}Mon Profil - Administration{% endblock %}
+
+{# C'EST LA LIGNE CLÉ À CHANGER : Essayons le bloc 'content' #}
+{% block content %}
+    <div class="container-fluid">
+        <h1>Mon Profil Utilisateur</h1>
+
+        {# Affichage des messages flash (success, error, etc.) #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} mt-3">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <p><strong>Email :</strong> {{ user.email }}</p>
+        <hr>
+
+        <h2>Changer mon mot de passe</h2>
+        {{ form_start(changePasswordForm) }}
+            {{ form_row(changePasswordForm.currentPassword) }}
+            {{ form_row(changePasswordForm.newPassword.first) }}
+            {{ form_row(changePasswordForm.newPassword.second) }}
+
+            <button type="submit" class="btn btn-primary">Modifier le mot de passe</button>
+        {{ form_end(changePasswordForm) }}
+    </div>
+{% endblock %} {# FIN DU BLOC 'content' #}

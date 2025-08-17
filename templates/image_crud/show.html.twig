@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Image{% endblock %}
+
+{% block body %}
+    <h1>Image</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ image.id }}</td>
+            </tr>
+            <tr>
+                <th>FileName</th>
+                <td>{{ image.fileName }}</td>
+            </tr>
+            <tr>
+                <th>OriginalName</th>
+                <td>{{ image.originalName }}</td>
+            </tr>
+            <tr>
+                <th>AltText</th>
+                <td>{{ image.altText }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ image.updatedAt ? image.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Formats</th>
+                <td>{{ image.formats ? image.formats|json_encode : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_image_crud_index') }}">back to list</a>
+
+    <a href="{{ path('app_image_crud_edit', {'id': image.id}) }}">edit</a>
+
+    {{ include('image_crud/_delete_form.html.twig') }}
+{% endblock %}

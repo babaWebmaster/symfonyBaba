@@ -1,0 +1,14 @@
+# config/packages/rate_limiter.yaml
+framework:
+    rate_limiter:
+        # C'est le nom de notre limiteur, que nous utiliserons dans le code (SecurityLoginListener).
+        login_ip_limiter:
+            # La politique 'fixed_window' est simple et efficace pour les connexions.
+            # Elle autorise un nombre fixe de tentatives sur une période donnée.
+            policy: 'fixed_window'
+
+            # Le nombre maximum de tentatives autorisées.
+            limit: 5 # Par exemple, 5 tentatives.
+
+            # La durée de la fenêtre de temps pour ces tentatives.
+            interval: '15 minutes' # Par exemple, toutes les 15 minutes.

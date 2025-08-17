@@ -1,0 +1,70 @@
+{# templates/back_office/admin/security_logs.html.twig #}
+
+{% extends 'back_office/admin/base.html.twig' %}
+
+{% block title %}Logs de Sécurité - Mon Back Office{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Logs de Sécurité</h1>
+        <p>Historique des tentatives de connexion réussies et échouées.</p>
+
+        <h2>Connexions Réussies</h2>
+        {# Ici, vous afficherez la liste des LoginAttempt à partir de la variable 'loginAttempts' #}
+        {# Exemple (à remplacer par votre logique réelle) #}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Utilisateur</th>
+                    <th>IP</th>
+                    <th>Pays</th>
+                    <th>Ville</th>
+                    <th>Date & Heure</th>
+                    <th>User Agent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# {% for attempt in loginAttempts %} #}
+                <tr>
+                    <td>user@example.com</td>
+                    <td>192.168.1.1</td>
+                    <td>France</td>
+                    <td>Paris</td>
+                    <td>2025-06-07 15:00:00</td>
+                    <td>Mozilla/5.0...</td>
+                </tr>
+                {# {% endfor %} #}
+            </tbody>
+        </table>
+
+        <h2 style="margin-top: 30px;">Connexions Échouées</h2>
+        {# Ici, vous afficherez la liste des LoginFailure à partir de la variable 'loginFailures' #}
+        {# Exemple (à remplacer par votre logique réelle) #}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Identifiant Tenté</th>
+                    <th>IP</th>
+                    <th>Pays</th>
+                    <th>Ville</th>
+                    <th>Date & Heure</th>
+                    <th>Raison</th>
+                    <th>User Agent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# {% for failure in loginFailures %} #}
+                <tr>
+                    <td>nonexistent@example.com</td>
+                    <td>192.168.1.2</td>
+                    <td>Allemagne</td>
+                    <td>Berlin</td>
+                    <td>2025-06-07 15:05:00</td>
+                    <td>Bad credentials</td>
+                    <td>Chrome/125...</td>
+                </tr>
+                {# {% endfor %} #}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
