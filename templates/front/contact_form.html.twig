@@ -1,0 +1,66 @@
+{# front/contact_form_content.html.twig #}
+{% for message in app.flashes('success') %}
+    <div class="alert primary-color bg-accent-color-light alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+    </div>
+{% endfor %}
+
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger primary-color alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+    </div>
+{% endfor %}
+
+
+<turbo-frame id="contact_form">
+                                            {{ form_start(contactForm, {'attr':{'class':'form-contact'}}) }}
+                        <div class="d-flex flex-lg-row flex-column justify-content-around ps-3 ps-lg-0 pe-3 pe-lg-0">
+                          <div class="mb-3 col-lg-2">
+                              {# Symfony utilise le label et le placeholder de votre classe PHP #}
+                              {{ form_label(contactForm.name) }}
+                              {{ form_widget(contactForm.name, {'attr': {'class': 'form-control'}}) }}
+                              <div class="text-danger">
+                                  {{ form_errors(contactForm.name) }}
+                              </div>
+                          </div>
+
+                          <div class="mb-3 col-lg-2">
+                              {{ form_label(contactForm.firstName) }}
+                              {{ form_widget(contactForm.firstName, {'attr': {'class': 'form-control'}}) }}
+                              <div class="text-danger">
+                                  {{ form_errors(contactForm.firstName) }}
+                              </div>
+                          </div>
+
+                          <div class="mb-3 col-lg-2">
+                              {{ form_label(contactForm.email) }}
+                              {{ form_widget(contactForm.email, {'attr': {'class': 'form-control'}}) }}
+                              <div class="text-danger">
+                                  {{ form_errors(contactForm.email) }}
+                              </div>
+                          </div>
+
+                          <div class="mb-3 col-lg-2">
+                              {{ form_label(contactForm.phone) }}
+                              {{ form_widget(contactForm.phone, {'attr': {'class': 'form-control'}}) }}
+                              <div class="text-danger">
+                                  {{ form_errors(contactForm.phone) }}
+                              </div>
+                          </div>
+                        </div>
+                          <div class="mb-3 ps-4 pe-4">
+                              {{ form_label(contactForm.message) }}
+                              {{ form_widget(contactForm.message, {'attr': {'class': 'form-control'}}) }}
+                              <div class="text-danger">
+                                  {{ form_errors(contactForm.message) }}
+                              </div>
+                          </div>
+
+                          {{ form_rest(contactForm) }}
+
+                          <button type="submit" class="btn btn-form bg-accent-color m-auto d-block font-size-standard primary-color ">Envoyer</button>
+
+                          {{ form_end(contactForm) }}
+</turbo-frame>

@@ -1,0 +1,20 @@
+{
+ 
+    "business":[
+        {
+            "name": "Baba webmaster",
+            "status": "Entrepreneur individuel",
+            "address": "22 rue Auguste Blanqui  78800 Houilles",
+            "NumberRegistration": "82160768600028",
+            "NumberTva": "FR11821607686"
+        }
+    ],
+    "host":[
+        {
+            "name": "EX2",
+            "address": "797 Bd Lebourgneuf suite 300, Québec, QC G2J 0B5, Canada",
+            "phone": " +1 581-801-5101"
+        }
+    ]
+   
+}

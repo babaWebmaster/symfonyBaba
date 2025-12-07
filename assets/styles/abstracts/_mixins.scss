@@ -1,0 +1,17 @@
+@use "../abstracts/variables" as *;
+
+@mixin media-up($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Le point de rupture '#{$breakpoint}' n'existe pas dans la carte des breakpoints.";
+  }
+}
+
+@mixin link-pagination{
+    transition: all 0.5s;   
+    background-color: $accent-color;
+    font-weight: bold;
+}

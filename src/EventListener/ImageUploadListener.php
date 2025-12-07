@@ -95,7 +95,8 @@ class ImageUploadListener implements EventSubscriberInterface
 
         // IMPORTANT : Utiliser le chemin d'upload DEPUIS ImageProcessor
         // car c'est lui qui est le responsable de l'emplacement des fichiers.
-        $filePath = $this->imageProcessor->getUploadDir() . '/' . $uploadedFileName;
+         $filePath = $this->imageProcessor->getUploadDir() . '/' . $uploadedFileName;
+
 
         // Assurez-vous que le fichier existe avant de tenter de l'ouvrir
         if (!file_exists($filePath)) {

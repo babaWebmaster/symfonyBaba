@@ -1,8 +1,31 @@
- <footer  data-controller="lazy-background" data-lazy-background-mobile-url="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(backgroundFooter.image_object.formats.small) }}">
-<h5>footer</h5>
- </footer>
+
+      <div class="col-lg-4 container-adress pt-2 ps-2 pe-2 pb-2 mt-5 text-center">
+
+        <h3 class="primary-color fw-bold">Contactez votre webmaster</h3>
+        <ul class="list-unstyled">
+          <li class="white-color">David Pautrat webmaster freelance et indépendant</li>
+          <li><a class="link-primary-color" href="tel:+{{APP_PHONE_WEBMASTER_TEL}}">
+            <i class="bi bi-telephone me-3"></i>{{ APP_PHONE_WEBMASTER}}</a></li>
+          <li><a class="link-primary-color" href="">
+                <i class="bi bi-envelope me-3"></i>Un petit message pour votre webmaster</a>
+          </li>
+        
+        </ul>
+      
+      </div>
+
+      <div class="col-lg-6 container-link pt-2 ps-2 pe-2 pb-2 mt-5 text-center">
+        <h3 class="primary-color fw-bold" >Naviguez dans mon site web</h3>
+        <ul class="list-unstyled">
+          <li>Accueil / <a href="{{ path('app_home') }}">Retour à la page principale de votre webmaster freelance</a></li>
+          <li>Contact / <a href="{{ path('app_contact_devis') }}">Prenez contact avec expert en création de site web</a></li>
+          <li>Création de site web e-commerce / <a href="{{ path('app_creation_site_commerce') }}">Mes solutions pour lancer votre boutique en ligne</a></li>
+          <li>Création de site wordpress / <a href="{{ path('app_creation_site_wordpress') }}">Obtenez un site web flexible et puissant avec wordpress</a></li>
+          <li>Création de site vitrine sur mesure / <a href="{{ path('app_creation_site_vitrine') }}">Un site vitrine sur mesure pour votre activité</a></li>
+          <li>Mention légale / <a href="{{ path('app_mention_legale') }}">Tous savoir sur ce site internet</a></li>
+        </ul>
+      </div>
+
+
+
  
- 
-  {{encore_entry_script_tags('app')}}
-</body>
-</html>

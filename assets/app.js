@@ -1,6 +1,18 @@
+// assets/app.js
+// (or assets/bootstrap.js - and then import it from app.js)
+//import pour faire fonctionner stimulus bridges
+import { startStimulusApp } from '@symfony/stimulus-bridge';
+
+export const app = startStimulusApp(require.context(
+    '@symfony/stimulus-bridge/lazy-controller-loader!./controllers',
+    true,
+    /\.(j|t)sx?$/
+));
+
 import 'bootstrap';
 
-import './bootstrap.js';
+
+
 
 /*
  * Welcome to your app's main JavaScript file!
@@ -10,4 +22,4 @@ import './bootstrap.js';
  */
 import './styles/app.scss';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+

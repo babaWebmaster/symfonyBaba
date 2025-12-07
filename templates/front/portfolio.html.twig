@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<section class="container-portfolio bg-gradient-diagonal-secondary-color-light pt-5 pb-5">
+
+<h1 class="primary-color text-center">Nos réalisations à Houilles et en Île-de-France — Création de sites web sur mesure</h1>
+
+<h2 class="secondary-color text-center">Découvrez nos créations de sites internet pour agences, commerces, artisans et PME</h2>
+
+<p class="col-11 ms-1 me-1 text-center">Je conçois des sites web modernes, rapides et responsive, adaptés à chaque entreprise, quel que soit son secteur. Parcourez mes réalisations pour découvrir comment je mets en valeur les services, les produits et les équipes de mes clients.</p>
+
+<p class="col-11 ms-1 me-1 text-center">Je crée des <a class="link-primary-hover-dark" href="{{ path('app_creation_site_vitrine') }}">sites vitrines professionnels</a> pour les PME et entrepreneurs. Je réalise également tout type de <a class="link-primary-hover-dark" href="{{ path('app_creation_site_commerce') }}">site e-commerce</a> sous WooCommerce pour vendre vos produits en ligne. J’utilise des technologies modernes et des CMS fiables tels que <a class="link-primary-hover-dark" href="{{ path('app_creation_site_wordpress') }}">WordPress</a> pour garantir performance, sécurité et simplicité de gestion.</p>
+
+<a class="btn btn-blue m-auto text-center d-block col-lg-3 col-md-6 col-sm-8" href="{{ path('app_contact_devis') }}" role="button">Demander un devis pour votre site internet</a>
+
+
+    <div class="wrapper-vignette d-flex flex-column flex-md-row flex-wrap justify-content-around">
+
+  
+        {% for vignette in pagination %}
+
+         {% set url = path('app_portfolio_slug', {'slug': vignette.slug}) %}
+
+        <a class="d-block mb-3" href="{{ url }}">
+            <div class="ms-2 me-2 ms-sm-0 me-sm-0 vignette mb-3 mt-3 bg-accent-color-light pt-2 pb-2 ps-2 pe-2 d-flex align-items-center flex-column">
+            <div class="hover-reveal pt-2 d-flex flex-column justify-content-center">
+                <h3 class="fw-bold text-center secondary-color">{{ vignette.subtitle }}</h3>
+                <p>{{ vignette.shortDescription }}</p>
+            </div>    
+            
+                {% if images[vignette.id] is defined %}
+                {{ images[vignette.id]['htmlImage']|raw }}
+                {% endif %} 
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+    <nav class="pagination mt-3 text-center d-flex flex-row justify-content-center">
+        {% for i in 1..pagination.getPaginationData().pageCount %}
+            <a href="{{ path('app_portfolio', { page: i }) }}"
+                {% set data = pagination.getPaginationData() %}
+            class="link-pagination pt-2 pb-2 pe-3 ps-3 primary-color text-decoration-none me-2 d-block {{ i == data.current ? 'active' : '' }}">
+            {{ i }}
+            </a>
+        {% endfor %}
+    </nav>
+
+
+</section>
+
+
+
+
+
+
+
+{% endblock %}

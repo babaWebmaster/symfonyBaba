@@ -1,0 +1,19 @@
+// assets/styles/_variables.scss
+// Couleurs principales de votre palette
+@use "sass:color";
+
+$primary-color: #321af0;   // Bleu vif
+$primary-color-dark:darken($primary-color,10%);
+$secondary-color: #f56000; // Orange
+$accent-color: color.adjust($secondary-color,$lightness: 20%); 
+$text-color-inverted: #ffffff;
+$color-black:#110e0e;
+$primary-color-light: color.adjust($primary-color,$lightness: 5%);
+$grey-light: color.adjust(grey,$lightness: 45%);
+
+$breakpoints: (
+  'small': 576px,
+  'medium': 768px,
+  'large': 992px,
+  'xlarge': 1200px
+);

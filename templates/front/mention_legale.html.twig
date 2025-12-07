@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <section class="bg-off-white pt-3 pb-3 ps-3 pe-3">
+
+        <h1 class="primary-color">Mentions Légales</h1>
+        <h2 class="secondary-color">Information légale</h2>
+        <h3 class="primary-color-dark">Éditeur du site :</h3>
+        <ul>
+        {% if page_data.business is defined and page_data.business is not empty %}
+            {% for info in page_data.business %}
+                {% for info_key , info_value in info %}
+                    <li>{{ info_value }}</li>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+        </ul>
+        <h3 class="primary-color-dark">Responsable de la publication :</h3>
+        <p>David Baba</p>
+
+        <h3 class="primary-color-dark">Hébergement :</h3>
+        <ul>
+            {% if page_data.host is defined and page_data.host is not empty %}
+                {% for info in page_data.host %}
+                    {% for info_key , info_value in info %}
+                        <li>{{ info_value }}</li>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        </ul>
+
+        <h3 class="primary-color-dark">Protection des données :</h3>
+        <p>Les informations collectées via le formulaire de contact sont destinées uniquement à répondre à vos demandes. 
+Vous disposez d’un droit d’accès, de rectification et de suppression en écrivant au formulaire présent sur la page de <a href="{{ path('app_contact_devis')}}" title="Utilisez ce formulaire pour modifier ou supprimer vos données personnelles.">contact</a>. 
+Pour plus d’informations, consultez notre Politique de confidentialité.</p>
+    </section>
+
+
+   
+
+{% endblock %}
+

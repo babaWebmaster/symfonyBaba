@@ -3,6 +3,11 @@ twig:
     globals:
         APP_ASSETS_BASE_URL: '%env(APP_ASSETS_BASE_URL)%'
         APP_ASSET_UPLOAD_IMAGE: '%env(APP_ASSET_UPLOAD_IMAGE)%'
+        APP_PHONE_WEBMASTER: '07 66 07 47 24'
+        APP_PHONE_WEBMASTER_TEL: '0766074724'
+    default_path: '%kernel.project_dir%/templates'
+    
+
 when@test:
     twig:
         strict_variables: true

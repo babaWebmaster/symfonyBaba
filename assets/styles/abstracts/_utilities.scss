@@ -1,0 +1,336 @@
+// Importez les variables ici pour qu'elles soient disponibles
+//importation variable
+@use "sass:color";
+@use "../abstracts/variables" as *;
+
+
+
+
+// Classes utilitaires
+.primary-color {
+    color: $primary-color;
+}
+.primary-color-light{
+    color: $primary-color-light;
+}
+
+.primary-color-dark{
+    color:$primary-color-dark;
+}
+
+.secondary-color{
+    color: $secondary-color;
+}
+
+.accent-color{
+    color: $accent-color;
+}
+
+.text-color-inverted{
+    color: white;
+}
+
+.color-black{
+    color:$color-black;
+}
+
+.link-primary-color{
+     color: $primary-color;
+     transition: color 0.3s ease;
+     &:hover{
+     color: $accent-color;
+     }
+}
+
+.link-accent-color{
+    color:$accent-color;
+    transition:color 0.3s ease;
+    &:hover{
+    color:$secondary-color;
+    transition:color 0.3s ease;
+    }
+}
+
+.link-primary-color-hover-white{
+    color:$primary-color;
+    transition:color 0.3s ease;
+    &:hover{
+        color:$text-color-inverted;
+    }
+}
+
+.link-primary-hover-dark{
+    color:$primary-color;
+    text-decoration: none;
+    transition:color 0.3s ease, text-decoration 0.3s ease;
+    &:hover{
+        color:$primary-color-dark;
+        text-decoration: underline;
+        }
+}
+
+.bg-secondary-color{
+    background-color: $secondary-color;
+}
+
+.bg-accent-color{
+    background-color: $accent-color;
+}
+
+
+.bg-primary-color{
+    background-color: $primary-color;
+}
+
+.bg-off-white{
+    background-color:#fdf8f4;
+}
+
+.bg-accent-color-light{
+    background-color: lighten($secondary-color,30%);
+}
+
+.bg-gradient-diagonal-secondary-color-light{
+    background: linear-gradient(to top right, #ff9c5c 0%,white 50%,#ff9c5c 100%);    
+}
+
+.bg-gradient-duotone{
+    background: linear-gradient(to top right, $accent-color 0%, $primary-color-dark 100%);
+}
+
+.bg-grey-light{
+   background-color: $grey-light; 
+}
+
+.bg-gradient-anime{
+    background-size: 150% 150%;
+    animation : animation-gradient 10s ease-in-out infinite;
+}
+
+.bg-png{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.btn-form{
+    border-radius: 12px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transform: translateY(0);
+    transition: box-shadow 0.5s ease, background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+    &:hover{
+    background-color: color.adjust($color: $accent-color, $saturation: 0%, $lightness: -20%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    color:$text-color-inverted;
+    }
+}
+
+.btn-blue{
+  background-color: $primary-color; // bleu vif
+  color: $text-color-inverted; // blanc
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border: 2px solid transparent;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  &:hover{
+    background-color: $accent-color; // orange vif
+    color: $primary-color; // bleu
+    border-color: $primary-color;
+  }
+}
+
+.btn-border-animated {
+  position: relative;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: $primary-color;
+  color: $text-color-inverted;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1;
+  text-decoration: none;
+  transition: color 0.5s ease, transform 0.5s ease;
+  &:hover{
+    color:$secondary-color;
+    transform:scale(1.05);
+  }
+
+        // Border invisible par défaut
+        &::before {
+            content: "";
+            position: absolute;
+            inset: -2px; // largeur du "border"
+            border-radius: inherit;
+            background: conic-gradient(
+            from 0deg,
+            $secondary-color,
+            $accent-color,
+            $secondary-color
+            );
+            z-index: -1;
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        &:hover::before {
+            opacity: 1;
+        }
+
+        // Pour éviter que le fond prenne le gradient
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            border-radius: inherit;
+            background: $primary-color;
+            z-index: -1;
+        }
+}
+
+.btn-grow {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: $secondary-color;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.5s ease;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 0%;
+        z-index: -1;
+        transition: width 1s ease, height 1s ease;
+        background-color: $primary-color-dark;
+        border-radius:12px;
+    }
+
+    &::before {
+        top: 0;
+        left: 0;
+    }
+
+    &::after {
+        bottom: 0;
+        right: 0;
+    }
+
+  // C'est ici que l'animation est déclenchée
+  &:hover {
+    transform: scale(1.08);
+    background-color:$secondary-color;
+    color:$text-color-inverted;
+    
+    // Le survol du bouton .btn affecte les pseudo-éléments
+    &::before {
+      width: 110%;
+      height: 110%;
+    }
+
+    &::after {
+      width: 110%;
+    height: 110%;
+    }
+  }
+}
+
+.btn-flash{
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: $secondary-color;
+    position: relative;
+    color:white;
+    transition: transform 0.3s ease;
+    z-index: 0;
+    &::before{
+        content: "";
+        top:0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        filter: blur(5px);
+        position: absolute;
+        opacity:0;
+        transition: opacity 0.1s ease, width 1s ease 0.1s;
+        border-radius:10px;
+        z-index: -1;
+    }
+    &::after{
+        content:"";
+        top:0;
+        left: 0;
+        position: absolute;
+        background-color: $primary-color;
+        width: 0%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.1s ease 0.1s,width 1s ease 0.1s;
+        border-radius: 10px;
+        z-index: -1;
+    }
+     &:hover{
+        transform: scale(1.02);
+        color:white;
+        &::before{
+            opacity: 1;
+            width: 0%;
+        }
+        &::after{
+            opacity:1;
+            width:100%;
+        }
+            
+        }
+}
+
+.font-size-standard{
+    font-size:clamp(16px, 1rem + 0.5vw, 19px);
+}
+
+.line-height-standard{
+    line-height: 2rem;
+}
+
+
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animation-gradient{
+    0% {
+    background-position: 0% 50%; /* Position de départ */
+  }
+  50% {
+    background-position: 100% 50%; /* Position du milieu */
+  }
+  100% {
+    background-position: 0% 50%; /* Retour à la position de départ pour un cycle continu */
+  }    
+}
+
+
+
+
+
+
+

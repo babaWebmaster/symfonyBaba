@@ -1,0 +1,67 @@
+@use "sass:color";
+
+@use "../../abstracts/index" as *;
+.section-presentation{
+    position: relative;
+    z-index: 0;
+    &::before{
+        content: "";
+        width: 100%;
+        height: 100%;
+        top:0;
+        left: 0;
+        position: absolute;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4));
+        z-index: -1;
+    }
+}
+
+.section-choose-cms{
+    .container-what-cms{
+        .what-cms{
+            border-radius: 10px;
+        }
+    }
+    .container-vs-cms{
+        .cms{
+            border-radius: 10px;
+            h3{
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+        }
+    }
+}
+
+.section-price{
+    ul{
+        list-style-type: none;
+    }
+}
+
+.section-faq {
+    .accordion {
+        .accordion-item {
+            &:nth-of-type(odd) {
+                button {
+                    background: linear-gradient(to top right, $secondary-color 0%, white 50%, $secondary-color 100%);
+                }
+            }
+            &:nth-of-type(even) {
+                button {
+                    background-color: $accent-color;
+                }
+            }
+        }
+        
+        .accordion-header {
+            .accordion-button {
+                // Les règles de focus doivent être ici pour s'appliquer à tous les boutons
+                &:focus {
+                    border-color: transparent;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}

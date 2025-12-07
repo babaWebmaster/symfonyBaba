@@ -31,14 +31,8 @@ class ImageHtmlBuilder
 
          
         //Déterminer l'URL pour l'attribut 'src' selon le format indiqué dans les arguments
-        $finalSrc = match ($srcFormat) {
-            'thumbnail' => $this->assetPackages->getUrl($formats['thumbnail'] ?? $baseFileName, 'uploads_images'),
-            'medium'    => $this->assetPackages->getUrl($formats['medium'] ?? $baseFileName, 'uploads_images'),
-            'large'     => $this->assetPackages->getUrl($formats['large'] ?? $baseFileName, 'uploads_images'),
-            'original'  => $this->assetPackages->getUrl($baseFileName, 'uploads_images'),
-            default  => $this->assetPackages->getUrl($baseFileName, 'uploads_images'),
-            };
-
+        $finalSrc = $this->getImageUrlByFormat($srcFormat, $baseFileName, $formats);
+      
         // --- Génération des attributs supplémentaires ---
         $extraAttributes = $this->buildAttributes($attributes);
         // alt texte
@@ -54,7 +48,7 @@ class ImageHtmlBuilder
                 $extraAttributes
             );
          }
-
+    
         // --- Construction du srcset ---
         $srcsetParts = [];
         // Assurez-vous que les largeurs (150w, 600w, 1200w) correspondent à vos formats réels
@@ -82,14 +76,14 @@ class ImageHtmlBuilder
         // --- Construction des sources <picture> pour WebP (si disponibles) ---
         $sourcesHtml = '';
         $webpSrcsetParts = [];
-        if (isset($formats['webp_thumbnail'])) {
-            $webpSrcsetParts[] = $this->assetPackages->getUrl($formats['webp_thumbnail'], 'uploads_images') . ' 150w';
+        if (isset($formats['thumbnail_webp'])) {
+            $webpSrcsetParts[] = $this->assetPackages->getUrl($formats['thumbnail_webp'], 'uploads_images') . ' 150w';
         }
-        if (isset($formats['webp_medium'])) {
-            $webpSrcsetParts[] = $this->assetPackages->getUrl($formats['webp_medium'], 'uploads_images') . ' 600w';
+        if (isset($formats['medium_webp'])) {
+            $webpSrcsetParts[] = $this->assetPackages->getUrl($formats['medium_webp'], 'uploads_images') . ' 600w';
         }
-        if (isset($formats['webp_large'])) {
-            $webpSrcsetParts[] = $this->assetPackages->getUrl($formats['webp_large'], 'uploads_images') . ' 1200w';
+        if (isset($formats['large_webp'])) {
+            $webpSrcsetParts[] = $this->assetPackages->getUrl($formats['large_webp'], 'uploads_images') . ' 1200w';
         }
         if (!empty($webpSrcsetParts)) {
             $sourcesHtml .= '<source srcset="' . implode(', ', $webpSrcsetParts) . '" type="image/webp" sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px">';
@@ -144,5 +138,37 @@ class ImageHtmlBuilder
 
         return $extraAttributes;
     }
+
+    public function getImageUrlByFormat($srcFormat, $baseFileName, $formats){
+        
+         $finalSrc = match ($srcFormat) {
+            'thumbnail' => $this->assetPackages->getUrl($formats['thumbnail'] ?? $baseFileName, 'uploads_images'),
+
+            'medium'    => $this->assetPackages->getUrl($formats['medium'] ?? $baseFileName, 'uploads_images'),
+
+            'small' => $this->assetPackages->getUrl($formats['small'] ?? $baseFileName, 'uploads_images'),
+
+            'large'     => $this->assetPackages->getUrl($formats['large'] ?? $baseFileName, 'uploads_images'),
+
+            'original_compressed' => $this->assetPackages->getUrl($formats['original_compressed'] ?? $baseFileName, 'uploads_images'),
+
+            'large_webp' => $this->assetPackages->getUrl($formats['large_webp'] ?? $baseFileName, 'uploads_images'),
+
+            'medium_webp' => $this->assetPackages->getUrl($formats['medium_webp'] ?? $baseFileName, 'uploads_images'),
+
+            'small_webp' => $this->assetPackages->getUrl($formats['small_webp'] ?? $baseFileName, 'uploads_images'),
+
+            'thumbnail_webp' => $this->assetPackages->getUrl($formats['thumbnail_webp'] ?? $baseFileName, 'uploads_images'),
+
+            'original'  => $this->assetPackages->getUrl($baseFileName, 'uploads_images'),
+
+             default  => $this->assetPackages->getUrl($baseFileName, 'uploads_images'),
+            };
+       
+        return $finalSrc;
+    }
+
+  
+
 
 }

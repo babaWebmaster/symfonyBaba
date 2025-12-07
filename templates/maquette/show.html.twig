@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maquette{% endblock %}
+
+{% block body %}
+    <h1>Maquette</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ maquette.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ maquette.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ maquette.description }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ maquette.url }}</td>
+            </tr>
+            <tr>
+                <th>ImagePreview</th>
+                <td>{{ maquette.imagePreview ? maquette.imagePreview|json_encode : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_maquette_index') }}">back to list</a>
+
+    <a href="{{ path('app_maquette_edit', {'id': maquette.id}) }}">edit</a>
+
+    {{ include('maquette/_delete_form.html.twig') }}
+{% endblock %}

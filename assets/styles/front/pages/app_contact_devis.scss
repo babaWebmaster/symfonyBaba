@@ -1,0 +1,46 @@
+@use "sass:color";
+
+@use "../../abstracts/index" as *;
+
+.section-form{
+    .alert-danger{
+        background-color: red;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        color:white;
+    }
+
+    .alert-danger{
+        @include media-up('large'){
+            position: relative;
+        }
+    }
+
+    .form-contact{
+        label{
+            font-weight: bold;
+            color: $primary-color;
+            margin-bottom: 0.5rem;
+        }
+        .form-control{
+            &:focus{
+                box-shadow:0 0 0 .15rem $accent-color ;
+            }
+            &:focus-visible{
+                outline: 2px solid $accent-color;
+                outline-offset: 2px;
+            }
+           
+            
+        }
+         .text-danger{
+                ul{
+                   list-style-type: none;    
+                   font-weight: bold;                                  
+                }
+            }
+    }
+}

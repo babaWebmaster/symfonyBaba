@@ -1,9 +1,108 @@
 {% extends 'base.html.twig' %}
 
-
-
 {% block body %}
-<h1>Bienvenue</h1>
+
+<section data-controller="lazy-background"
+ {% if background_presentation.image_object is defined %}
+  data-lazy-background-mobile-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_presentation.image_object.formats.small) }}"
+  data-lazy-background-ipad-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_presentation.image_object.formats.medium) }}" 
+  data-lazy-background-desktop-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_presentation.image_object.formats.large) }}"
+  {% endif %}
+  class="section-presentation ps-5 pe-5 pt-5 pb-5">
+
+    <h1 class="primary-color fw-bold">David Webmaster Freelance à Paris pour la création de site web sur mesure</h1>
+    <h2 class="accent-color fw-bold col-lg-8 offset-lg-4 text-sm-end">Vous êtes à la recherche d'un webmaster freelance à Paris</h2>
+    <p class="text-color-inverted fw-semibold font-size-standard">Je suis <strong>webmaster indépendant</strong>, spécialisé dans la <strong>création de sites internet modernes</strong>, performants et pensés pour le référencement naturel (SEO). Basé en Île-de-France, à proximité de la capitale, j’accompagne les professionnels, entrepreneurs et petites entreprises dans la mise en place de leur stratégie digitale.
+        Que vous ayez besoin d’un <a class="link-accent-color" href=""><strong>site vitrine</strong></a>, <a class="link-accent-color" href=""><strong>d’une boutique en ligne</strong></a> ou <a class="link-accent-color" href=""><strong>d’un site WordPress sur-mesure</strong></a>, je mets mon expertise de <strong>développeur web freelance à Paris</strong> au service de votre visibilité.
+        Plus besoin de poursuivre votre recherche de <strong>créateur de site internet à Paris</strong> : confiez-moi votre projet et bénéficiez d’un accompagnement personnalisé.
+    </p>
+    <div class="container-quality col-lg-8 m-auto col-md-10 col-12">
+        {% for item in page_data.quality %}
+        <div>
+            <h3 class="secondary-color text-decoration-underline fw-bold pt-2 pb-2 ps-3 pe-3">{{ item.title }}</h3>
+            <p class="text-color-inverted font-size-standard">{{ item.paragraphs }}</p>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    
+    <div class="d-flex container-button-form justify-content-center">
+    
+        <a class="btn btn-form text-center bg-accent-color d-block pt-2 pb-2 ps-4 pe-4 fs-4 primary-color fw-bold" href="#" role="button" title="Demander un devis à votre webmaster freelance à Paris">Demande de devis</a>
+
+    </div>
+
+</section>
+
+<section class="section-services pt-3 pb-5">
+    <h2 class="primary-color text-center">Nos services : Création de Sites Vitrine, E-commerce et Wordpress à Houilles</h2>
+    <p class="primary-color-light text-center font-size-standard">Que vous soyez à Houilles, Saint-Germain-en-Laye, Versailles ou Paris, je vous accompagne dans la création de sites vitrines, e-commerce et WordPress adaptés à votre activité. Je propose des solutions sur mesure adaptés à vos besoins spécifiques</p>
+
+    <div class="container-services d-flex flex-md-row justify-content-around flex-column flex-wrap mt-5">
+    {% if page_data is defined%}
+        {% for service in page_data.services %}
+        <div class="service ps-4 pe-4 pt-3 pb-3 mt-3 ms-1 me-1 col-md-10 col-lg-5 col-xl">
+            <h3 class="primary-color mb-5 bg-gradient-diagonal-secondary-color-light ps-4 pe-4 pt-2 pb-2">{{ service.title }}</h3>
+            <ul class="mb-4 text-color-inverted p-0">
+                {% for item in service.list %}
+                    <li class="mt-3 mb-3 ">
+                    <i aria-hidden="true" class="{{ item.i }} primary-color me-md-5"></i>
+                    <span>{{ item.text }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a class="btn btn-blue" href="#" role="button" title="{{ service.titleButton }}">{{ service.textButton }}</a>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+</section>
+
+<section class="section-why-webmaster ps-2 pe-2 pt-2 pb-2">
+    <h2 class="primary-color text-center">Pourquoi choisir David Webmaster Freelance de Paris ?</h2>
+    <p class="primary-color-light font-size-standard">En tant que webmaster freelance à Paris, j'aide les entrepreneurs et petites entreprises de la région parisienne à créer une présence en ligne forte et professionnelle. Que vous ayez besoin d'un<a class="link-primary-color" href=""> site vitrine sur mesure</a>, <a class="link-primary-color" href="">d'une boutique e-commerce performante</a> ou d'un <a class="link-primary-color" href="">site WordPress</a> clé en main, je conçois des solutions web adaptées à votre marché et à vos objectifs.
+    </p>
+    <div class="container-why-webmaster d-flex flex-wrap justify-content-center">
+    {% for item in page_data.why %}
+        <div class="col-md-7 d-flex flex-column ms-1 me-1">
+            <h3 class="bg-accent-color mb-0 pt-4 pb-4 ps-4 pe-4 primary-color fst-italic fw-bold">{{ item.title }}</h3>
+            <div class="bg-gradient-diagonal-secondary-color-light pt-2 pb-2 ps-4 pe-4 flex-grow-1 color-black font-size-standard mb-4 container-paragraph fw-semibold">{{ item.paragraph | raw }}</div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="d-flex justify-content-center">
+         <a class="btn-border-animated text-center" href="#" role="button" title="contactez David webmaster freelance en région Parisienne.">Un devis pour la création d'un site web</a>
+    </div>
+</section>
+
+<section class="section-portfolio bg-off-white pt-2 pb-3">
+
+    <h2 class="text-center primary-color mb-3 mt-3 fw-bold">Voici quelques réalisations de site en île de France</h2>
+
+    <p  class="text-center col-lg-7 m-auto mb-3 fst-italic fw-semibold ">
+        Découvrez mes projets réalisés pour des clients à Paris, Houilles, Saint-Germain-en-Laye, Versailles et dans toute l’Île-de-France.
+    </p>
+
+    <a href="{{ path('app_portfolio' ,{page : 1}) }}" class="btn-grow d-block m-auto col-lg-4 text-center mb-3 text-decoration-none">Voir plus des créations de site internet</a>
+
+
+    <p class="text-center col-lg-7 m-auto mb-3 fw-semibold">
+    Découvrez trois exemples de sites web que j’ai conçus pour des entreprises locales :
+    WordPress, vitrine et e-commerce. Chaque projet est réalisé sur mesure selon les besoins du client.
+    </p>
+
+    
+
+
+     {% include 'front/example_portfolio.html.twig' %}
+
+    
+</section>
+
+
    
 
 {% endblock %}
+

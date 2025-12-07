@@ -16,6 +16,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto;
 use Symfony\Component\HttpFoundation\Response;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
 class ImageCrudController extends AbstractCrudController
 { 
@@ -53,7 +57,9 @@ class ImageCrudController extends AbstractCrudController
         ->setFormType(VichImageType::class) // <<< Utilisez le type de formulaire de Vich !
         ->setFormTypeOptions([
             // 'attr' => ['accept' => 'image/*'], // C'est déjà la valeur par défaut pour VichImageType si pas de conf spécifique
-            'required' => $pageName === Crud::PAGE_NEW, // Gère si le champ est obligatoire
+            'required' => $pageName === Crud::PAGE_NEW,
+             // Gère si le champ est obligatoire
+            'allow_delete' => false,
             // Autres options spécifiques à VichImageType si besoin, par ex: 'download_link' => true
         ])
         // Les options setBasePath, setUploadDir, setUploadedFileNamePattern ne sont plus nécessaires ici pour le champ d'upload
@@ -67,7 +73,7 @@ class ImageCrudController extends AbstractCrudController
                 ->hideOnForm();
         
     // Pour afficher l'image existante sur les pages d'édition ou de détail (Optionnel mais recommandé):
-    if (in_array($pageName, [Crud::PAGE_EDIT, Crud::PAGE_DETAIL])) {
+     if (in_array($pageName, [Crud::PAGE_EDIT, Crud::PAGE_DETAIL])) {
         // 'fileName' est la propriété de l'entité où Vich stocke le nom du fichier après l'upload
         yield ImageField::new('fileName')
             ->setLabel('Aperçu Image Actuelle')
@@ -75,6 +81,8 @@ class ImageCrudController extends AbstractCrudController
             ->setFormTypeOption('disabled', true) // Rendre non modifiable
             ->hideOnForm(Crud::PAGE_NEW); // Cache cet aperçu sur la page de création
     }
+
+   
 
         // Champ pour le texte alternatif (alt)
         yield TextField::new('altText')
@@ -99,7 +107,10 @@ class ImageCrudController extends AbstractCrudController
         yield ArrayField::new('formats')
             ->setLabel('Formats Générés')
             ->setHelp('Chemins des différentes versions de l\'image.')
-            ->hideOnForm(); // Cache ce champ sur le formulaire, visible uniquement en liste
+            ->hideOnForm()// Cache ce champ sur le formulaire, visible uniquement en liste
+            ->hideOnIndex();
+
+   
     }
 
     
@@ -143,6 +154,23 @@ class ImageCrudController extends AbstractCrudController
         // Le parent::batchDelete() se charge généralement de la redirection après l'opération.
         return parent::batchDelete($context, $batchActionDto);
     }
+
+   public function configureActions(Actions $actions): Actions
+    {
+    return $actions
+        ->add(Crud::PAGE_INDEX, Action::new('uploadMultiple', 'Upload en Paquets')
+            ->linkToRoute('#')
+            ->createAsGlobalAction() 
+            ->setCssClass('btn btn-success')
+        );
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+     return Assets::new()->addJsFile('js/admin/image-bulk-upload.js');
+    }
+
+
 
      
 

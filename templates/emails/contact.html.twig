@@ -1,0 +1,11 @@
+{# templates/emails/contact.html.twig #}
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Nouveau message de contact</h1>
+        <p><strong>De:</strong> {{ data.name }} {{ data.firstName }} ({{ data.email }}) ({{ data.phone }})</p>
+        <hr>
+        <p>{{ data.message|nl2br }}</p>
+    </body>
+</html>

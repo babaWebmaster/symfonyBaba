@@ -1,0 +1,35 @@
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {# Bloc meta #}
+            {% include 'front/meta.html.twig' %}
+        
+        {% if favicon is defined %}
+
+         <link rel="icon" type="image/png" href="{{ asset('uploads/images/options/' ~ favicon) }}">
+
+
+        {% endif %}
+
+    {% block stylesheets %}
+
+          {{ encore_entry_link_tags('appFront') }}
+
+             {% set routeName = app.request.attributes.get('_route') %}
+              {% if routeName is defined and routeName is not null and encore_entry_exists(routeName) %}
+                {% for css in encore_entry_css_files(routeName) %}
+                    <link rel="stylesheet" href="{{ asset(css) }}" data-turbo-track="reload">
+                {% endfor %}
+              {% endif %}
+
+            
+ 
+    
+    {% endblock %}
+    
+   {% block javascripts %}
+          {{ encore_entry_script_tags('frontJs') }}
+      {% endblock %}
+          
+    
+          

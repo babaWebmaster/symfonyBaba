@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<section class="pt-3 pb-4 section-presentation" data-controller="lazy-background" 
+{% if background_wordpress.image_object is defined %}
+  data-lazy-background-mobile-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_wordpress.image_object.formats.small) }}"
+  data-lazy-background-ipad-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_wordpress.image_object.formats.medium) }}" 
+  data-lazy-background-desktop-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_wordpress.image_object.formats.large) }}"
+  {% endif %}
+>
+<h1 class="primary-color text-center fw-bold">Création de site WordPress  à Paris </h1>
+
+<div class="hook-wordpress fw-semibold mt-5 mb-5 ps-3 pe-3 pt-3 pb-3">
+    <h2 class="secondary-color">Un site WordPress sur mesure et optimisé pour le référencement SEO à Paris </h2>
+    <p class="primary-color">Développez votre activité professionnelle et gagnez de nouveaux clients dans la région parisienne et bien au-delà. Grâce à la création d'un site WordPress sur mesure, nous vous aidons à bâtir une présence en ligne forte et à booster votre visibilité sur Google.</p>
+</div>
+
+<div class="d-flex justify-content-center">
+    <a class="btn btn-grow" href="{{ path('app_contact_devis') }}" role="button" title="contact webmaster freelance Paris">Devis gratuit : site WordPress à Paris</a>
+</div>
+
+</section>
+
+<section class="section-why pt-5 pb-5">
+
+    <h2 class="primary-color text-center fw-bold">Pourquoi choisir WordPress pour votre site internet ?</h2>
+
+    <div class="container-why d-flex flex-wrap justify-content-center mt-5">
+
+       {% for why in page_data.whys %}
+        <div class="why col-md-6 ms-3 me-3 bg-gradient-diagonal-secondary-color-light mb-4 pt-4 ps-4 pe-4 pb-4">
+            <h3 class="secondary-color fw-bold mb-5">{{ why.title }}</h3>
+
+            {% for paragraph in why.paragraphs %}
+            <p class="fw-semibold font-size-standard line-height-standard">{{ paragraph }}</p>
+            {% endfor %}
+       </div>
+       {% endfor %}
+
+    </div>
+
+
+</section>
+
+<section class="section-step bg-grey-light">
+
+ <h2 class="primary-color fw-bold text-center">Les étapes clés pour un site WordPress à Paris et en Ile de France</h2>
+<div class="container-steps d-flex flex-wrap justify-content-around">
+ {% for key, step in page_data.steps %}
+  <div class="step col-lg-4 ms-1 me-1 bg-accent-color-light ps-4 pe-4 pt-4 pb-4 mb-4 ">
+    <h3 class="bg-accent-color ps-3 pe-3 pb-3 pt-3 mb-3 primary-color fw-semibold">
+    <svg xmlns="http://www.w3.org/2000/svg" width="80px" height="80px" class="polygone">
+        
+        <path d="M 479.90793,352.75284 346.19598,227.791 423.72248,62.008051 605.34844,84.510383 640.07296,264.20054 Z" transform="matrix(0.21838205,0,0,0.23817732,-68.487261,-8.0839654)">
+        </path>
+        <text x="35" y="50" fill="white">{{ key+1 }}</text>
+    </svg>
+    {{ step.title }}
+    </h3>
+        
+    {% for paragraph in step.paragraphs %}
+    <p class="fw-semibold font-size-standard line-height-standard"> {{ paragraph }} </p>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+
+
+</section>
+
+<section class="section-type-site bg-gradient-duotone bg-gradient-anime pt-4 pb-4">
+    <h2 class="primary-color mb-4 mt-4 text-center text-color-inverted fw-bold"> Quel type de site WordPress pour votre projet à Paris et en île de France</h2>
+    <div class="container-type-site d-flex flex-wrap justify-content-center">
+    {% for type in page_data.types %}
+    <div class="type-site bg-gradient-diagonal-secondary-color-light col-md-6 ms-1 me-1 mb-5 pt-2 pb-2 ps-4 pe-4">
+        <h3 class="fst-italic secondary-color fw-semibold">{{ type.title }}</h3>
+        {% for paragraph in type.paragraphs %}
+        <p class="fw-semibold font-size-standard line-height-standard">{{ paragraph | raw}}</p>
+        {% endfor %}
+        {% if type.button is defined %}
+        <a class="btn btn-blue" href="{{ path(type.button.route) }}" title="{{ type.button.title }}">{{ type.button.textLink }}</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-flash pt-2 pb-2 ps-2 pe-2 fw-bold" href="{{ path('app_contact_devis') }}" title="contact créateur wordPress">Devis gratuit pour un site WordPress</a>
+    </div>
+
+</section>
+
+<section class="section-portfolio section-portfolio bg-gradient-diagonal-secondary-color-light pt-2 pb-3">
+
+     <h2 class="text-center primary-color mb-3 mt-3 fw-bold">Exemples de sites Wordpress ou maquette réalisés pour des entreprises en île-de-France</h2>
+
+    <p  class="text-center col-lg-7 m-auto mb-3 fst-italic fw-semibold ">
+        Découvrez des sites vitrines réalisés pour des clients à Paris, Houilles, Neuilly-sur-Seine, Versailles et dans toute l’Île-de-France.
+    </p>
+
+    <a href="{{ path('app_portfolio' ,{page : 1}) }}" class="btn-grow d-block m-auto col-lg-4 text-center mb-3 text-decoration-none">Voir plus des réalisations de site WordPress</a>
+
+
+    <p class="text-center col-lg-7 m-auto mb-3 fw-semibold">
+    Découvrez deux exemples de sites WordPress  que j’ai conçus pour des entreprises locales :
+    WordPress. Chaque projet est réalisé sur mesure selon les besoins du client.
+    </p>
+
+    {% include 'front/example_portfolio.html.twig' %}
+
+</section>
+
+
+   
+
+{% endblock %}
+

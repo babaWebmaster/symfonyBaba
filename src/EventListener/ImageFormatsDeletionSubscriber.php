@@ -2,9 +2,9 @@
 
 namespace App\EventListener;
 
-use App\Entity\Image; // Importez votre entité Image
+use App\Entity\Image; 
 use Doctrine\Bundle\DoctrineBundle\EventSubscriber\EventSubscriberInterface;
-use Doctrine\ORM\Events; // <-- C'est l'import qui manquait !
+use Doctrine\ORM\Events; 
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Symfony\Component\Filesystem\Filesystem;
 

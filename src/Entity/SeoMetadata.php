@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SeoMetadataRepository;
+use App\Enum\FollowGoogle;   
+use App\Enum\IndexGoogle;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,6 +33,12 @@ class SeoMetadata
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $schemaJson = null;
+
+     #[ORM\Column(enumType: FollowGoogle::class, nullable: false)]
+    private ?FollowGoogle  $followGoogle = FollowGoogle::FOLLOW;
+
+    #[ORM\Column(enumType: IndexGoogle::class, nullable: false)]
+    private ?IndexGoogle $indexGoogle = IndexGoogle::INDEX;
 
     #[ORM\OneToOne(inversedBy: 'seoMetadata', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -109,6 +117,30 @@ class SeoMetadata
     public function setSchemaJson(?string $schemaJson): static
     {
         $this->schemaJson = $schemaJson;
+
+        return $this;
+    }
+
+    public function getFollowGoogle():? FollowGoogle
+    {
+        return $this->followGoogle;
+    }
+
+    public function setFollowGoogle(FollowGoogle $followGoogle): self
+    {
+        $this->followGoogle = $followGoogle;
+
+        return $this;
+    }
+
+    public function getIndexGoogle():? IndexGoogle
+    {
+        return $this->indexGoogle;
+    }
+
+    public function setIndexGoogle(IndexGoogle $indexGoogle): self
+    {
+        $this->indexGoogle = $indexGoogle;
 
         return $this;
     }

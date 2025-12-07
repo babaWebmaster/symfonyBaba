@@ -7,6 +7,15 @@ use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Filesystem\Filesystem; // Pour créer les dossiers si besoin
+/**
+ * format images
+ * thumbnail
+ * medium
+ * large
+ * original_compressed
+ * original
+ */
+
 
 class ImageProcessor
 {
@@ -139,22 +148,29 @@ class ImageProcessor
 
         // Détermine les options de sauvegarde en fonction du format
         $options = [];
-        if ($format === 'webp') {
-            $options['webp_quality'] = $quality;
-            $options['format'] = 'webp';
-        } elseif ($format === 'jpeg' || $format === 'jpg') { // Explicite pour JPG
+         // Détermine les options de sauvegarde en fonction du format
+    switch (strtolower($format)) {
+        case 'jpeg':
+        case 'jpg':
             $options['jpeg_quality'] = $quality;
             $options['format'] = 'jpeg';
-        } elseif ($format === 'png') { // Spécifique pour PNG (la qualité est différente)
-             // La qualité PNG est inversée (0=pas de compression, 9=compression max)
+            // Ajout de l'option clé pour le JPG progressif
+            $options['progressive'] = true; 
+            break;
+
+        case 'png':
+            // La qualité PNG est inversée (0=pas de compression, 9=compression max)
             $options['png_compression_level'] = round(9 - ($quality / 100 * 9));
             $options['format'] = 'png';
-        } else {
-            // Pour les autres formats ou par défaut, on utilise la qualité JPEG/WebP
-            // Imagine s'adapte à l'extension du fichier cible s'il n'y a pas de format défini
-            $options['jpeg_quality'] = $quality;
-            $options['webp_quality'] = $quality; // Au cas où l'extension est .webp
-        }
+            break;
+
+        case 'webp':
+            $options['webp_quality'] = $quality;
+            $options['format'] = 'webp';
+            break;
+
+        // Vous pouvez ajouter d'autres formats ici si nécessaire
+    }
 
         $image->save($filePath, $options);
     }

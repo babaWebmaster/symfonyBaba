@@ -1,94 +1,83 @@
 const Encore = require('@symfony/webpack-encore');
+const fs = require('fs');
+const path = require('path');
 
-// Manually configure the runtime environment if not already configured yet by the "encore" command.
-// It's useful when you use tools that rely on webpack.config.js file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
 Encore
-    // directory where compiled assets will be stored
+    // Dossiers de sortie
     .setOutputPath('public/build/')
-    // public path used by the web server to access the output path
     .setPublicPath('/build')
-    // only needed for CDN's or subdirectory deploy
-    //.setManifestKeyPrefix('build/')
-    
-
-    .enableStimulusBridge('./assets/controllers.json')
-    /*
-     * ENTRY CONFIG
-     *
-     * Each entry will result in one JavaScript file (e.g. app.js)
-     * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
-     */
-    .addEntry('app', './assets/app.js')
-    //fichier sass page login
-    .addEntry('login','./assets/styles/admin/login.scss')
-    //fichier css page modification mot de passe
-    .addEntry('reset','./assets/styles/reset_password/reset.scss')
-    
-    //fichier sass principal pour le front
-    .addEntry('appFront','./assets/styles/appFront.scss')
-
-    // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
-    .splitEntryChunks()
-
-    // will require an extra script tag for runtime.js
-    // but, you probably want this, unless you're building a single-page app
-    .enableSingleRuntimeChunk()
-
-    /*
-     * FEATURE CONFIG
-     *
-     * Enable & configure other features below. For a full
-     * list of features, see:
-     * https://symfony.com/doc/current/frontend.html#adding-more-features
-     */
     .cleanupOutputBeforeBuild()
 
-    // Displays build status system notifications to the user
-    // .enableBuildNotifications()
+    // Stimulus & jQuery
+    .enableStimulusBridge('./assets/controllers.json')
+    .autoProvidejQuery()
 
+    // Optimisations
+    .splitEntryChunks()
+    .enableSingleRuntimeChunk()
+
+    // Entrées JS
+    .addEntry('app', './assets/app.js')
+    .addEntry('frontJs', './assets/front.js')
+
+    // Styles globaux (avec HMR)
+    .addEntry('appFront', './assets/styles/front/appFront.scss')
+    .addEntry('login', './assets/styles/admin/login.scss')
+    .addEntry('reset', './assets/styles/reset_password/reset.scss')
+    .addEntry('adminGallery', './assets/styles/admin/admin-gallery.scss')
+
+    // Loaders
+    .enableSassLoader()
+    .enablePostCssLoader()
     .enableSourceMaps(!Encore.isProduction())
-    // enables hashed filenames (e.g. app.abc123.css)
-    .enableVersioning(Encore.isProduction())
-
-    // configure Babel
-    // .configureBabel((config) => {
-    //     config.plugins.push('@babel/a-babel-plugin');
-    // })
-
-    // enables and configure @babel/preset-env polyfills
-    .configureBabelPresetEnv((config) => {
+    .configureBabelPresetEnv(config => {
         config.useBuiltIns = 'usage';
         config.corejs = '3.38';
     })
 
-    // enables Sass/SCSS support
-    .enableSassLoader()
-     .configureDevServerOptions(options => {
-        options.hot = true;         // HMR activé
-        options.liveReload = false; // pas de reload complet
-         if (options.client) {
-        options.client.overlay = false;
-        } else {
-            options.client = { overlay: false };
+    // DevServer
+    .configureDevServerOptions(options => {
+        options.hot = true; // ✅ HMR activé
+        options.liveReload = true; // désactive le rechargement complet
+        options.client = { overlay: false }; // pas d’overlay
+        options.port = 8080;
+        options.static = { directory: path.resolve(__dirname, 'public') };
+        options.proxy = { '/': { target: 'http://127.0.0.1:8000', changeOrigin: true } };
+        options.watchFiles = {
+        paths: ['templates/**/*.twig', 'assets/**/*'],
+        options: {
+            usePolling: true,
+        },
+        };
+    });
+    
+
+/**
+ * === SCSS PAR PAGE ===
+ * On les compile séparément pour que Symfony puisse les inclure.
+ * On ne désactive PAS l’extraction CSS pour ces fichiers.
+ */
+const frontDir = path.resolve(__dirname, 'assets/styles/front/pages');
+if (fs.existsSync(frontDir)) {
+    fs.readdirSync(frontDir).forEach(file => {
+        if (file.endsWith('.scss')) {
+            const name = file.replace('.scss', '');
+            Encore.addStyleEntry(name, path.join(frontDir, file));
         }
-    })
+    });
+}
 
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
-
-    // uncomment if you use React
-    //.enableReactPreset()
-
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
-
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
-;
+// === Gestion de la versioning & CSS extraction ===
+if (Encore.isProduction()) {
+    Encore.enableVersioning();
+} else {
+    // ⚡️ On garde l'extraction pour les CSS par page,
+    // mais HMR agit toujours sur les CSS globaux.
+    // Rien à désactiver ici.
+}
 
 module.exports = Encore.getWebpackConfig();

@@ -1,0 +1,21 @@
+<div class="wrapper-vignette d-flex flex-column flex-md-row flex-wrap justify-content-around">
+
+  
+        {% for vignette in pagination %}
+
+         {% set url = path('app_portfolio_slug', {'slug': vignette.slug}) %}
+
+        <a class="d-block mb-3" href="{{ url }}">
+            <div class="ms-2 me-2 ms-sm-0 me-sm-0 vignette mb-3 mt-3 bg-accent-color-light pt-2 pb-2 ps-2 pe-2 d-flex align-items-center flex-column">
+            <div class="hover-reveal pt-2 d-flex flex-column justify-content-center">
+                <h3 class="fw-bold text-center secondary-color">{{ vignette.subtitle }}</h3>
+                <p>{{ vignette.shortDescription }}</p>
+            </div>    
+            
+                {% if images[vignette.id] is defined %}
+                {{ images[vignette.id]['htmlImage']|raw }}
+                {% endif %} 
+            </div>
+        </a>
+        {% endfor %}
+    </div>

@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<section class="section-presentation bg-accent-color-light bg-png pt-3 pb-5 ps-3 pe-3"
+data-controller="lazy-background" 
+{% if background_eCommerce.image_object is defined %}
+  data-lazy-background-mobile-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_eCommerce.image_object.formats.small) }}"
+  data-lazy-background-ipad-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_eCommerce.image_object.formats.medium) }}" 
+  data-lazy-background-desktop-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_eCommerce.image_object.formats.large) }}"
+  {% endif %}>
+
+    <h1 class="primary-color text-center fw-bold mt-5">Webmaster boutique en ligne à Paris : création de site e-commerce performant et sur mesure</h1>
+    
+    <h2 class="accent-color fw-semibold">Un site e-commerce moderne, pensé pour vendre et optimisé pour le référencement naturel</h2>
+
+    <div class="d-flex justify-content-center">
+     <p class="mt-5 col-md-8 fw-bold text-color-inverted font-size-standard line-height-standard">En tant que <strong>webmaster spécialisé dans la création de boutiques en ligne</strong>, 
+        je conçois pour vous un site e-commerce efficace et évolutif. Design responsive, navigation fluide, 
+        référencement naturel travaillé : tout est pensé pour transformer vos visiteurs en clients.  
+        Que vous souhaitiez développer vos ventes à Paris ou toucher un public national et international, 
+        je mets mon expertise au service d’une boutique en ligne rentable et alignée sur vos objectifs.</p>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-form bg-accent-color fw-bold text-color-inverted" href="{{ path('app_contact_devis') }}" title="webmaster boutique en ligne">devis pour une boutique en ligne</a>
+    </div>
+
+</section>
+
+<section class="section-features pt-4 pb-4 ps-2 pe-2">
+
+    <h2 class="primary-color text-center mb-5">Les atouts d'une boutique en ligne performante avec votre webmaster expert</h2>
+    <div class="d-flex flex-wrap justify-content-center">
+    {% for feature in page_data.features %}
+
+    <div class="col-md-7 mb-1 me-1 mb-5 bg-gradient-diagonal-secondary-color-light">
+        <h3 class="bg-secondary-color text-color-inverted ps-2 pe-2 pt-2 pb-2">{{ feature.title }}</h3>
+        <p class="ps-2 pe-2 pt-2 pb-2 font-size-standard line-height-standard">{{ feature.paragraphs |raw }}</p>
+    </div>
+    {% endfor %}
+    </div>
+
+</section>
+
+<section class="section-choose-cms bg-gradient-duotone pt-4 pb-4 ps-2 pe-2">
+
+    <h2 class="text-color-inverted fw-bold text-center">Choisir le bon CMS pour son site e-commerce : WooCommerce, PrestaShop </h2>
+
+    <div class="d-flex justify-content-center container-what-cms">
+        <div class="what-cms bg-gradient-diagonal-secondary-color-light col-md-8 mt-3 mb-3 ps-3 pe-3 pt-2 pb-2">
+            <h3 class="fst-italic primary-color"> Qu'est ce qu'un CMS pour votre boutique en ligne ?</h3>
+            <p class="font-size-standard line-height-standard mt-3 mb-3">Avant de vous lancer dans la création de votre site e-commerce à Paris, il est essentiel de comprendre le rôle d'un CMS (Content Management System), ou système de gestion de contenu. Un CMS est une interface intuitive, un "back-office", qui vous permet d'administrer et de gérer facilement votre boutique en ligne sans aucune connaissance technique approfondie.</p>
+            <p class="font-size-standard line-height-standard mt-3 mb-3">A tire d'exemple avec un cms ,vous pouvez transformer votre <a href="{{ path('app_creation_site_vitrine') }}" title="création de site vitrine à Paris" class="link-primary-hover-dark">site vitrine</a> en un site e-commerce, avec notamment wordPress et WooCommerce</p>
+            <p class="font-size-standard line-height-standard mt-3 mb-3"> Un CMS est la fondation de votre e-commerce, vous offrant la liberté de modifier vos produits, gérer vos commandes et mettre à jour votre contenu en toute autonomie. Parmi les solutions les plus fiables et populaires pour le commerce en ligne, nous retrouvons principalement WooCommerce, PrestaShop et Magento.</p>
+        </div>
+    </div>
+
+    <div class="container-vs-cms d-flex justify-content-around flex-lg-row flex-column mt-5 mb-5">
+
+        {% for cm in page_data.cms %}
+        
+        
+        <div class="cms col-lg-5 ms-1 me-1 mb-4 bg-accent-color-light pt-3 ps-3 pe-3 pb-3">
+
+            <h3 class="fst-italic bg-gradient-diagonal-secondary-color-light ps-2 pe-2 pt-2 pb-2 secondary-color">{{ cm.title }}</h3>
+
+            <p class="fw-semibold font-size-standard line-height-standard primary-color">{{ cm.paragraphs | raw}}</p>
+        
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+        <a href="/contact" class="btn btn-blue" title="Demander un devis e-commerce">
+            Discutons de votre projet e-commerce
+        </a>
+    </div>
+
+    
+
+</section>
+
+<section class="section-price mt-5 mb-5">
+
+    <h2 class="primary-color text-center">Le bon tarif pour une boutique en ligne e-commerce</h2>
+
+    <p class="mt-3 mb-3 col-md-8 m-auto font-size-standard line-height-standard primary-color-dark">Le prix d'un site e-commerce varie considérablement en fonction de vos besoins spécifiques, de la complexité des fonctionnalités souhaitées, du nombre de produits à intégrer et du niveau de personnalisation du design. Cette personnalisation peut inclure la création d'un thème sur mesure pour votre boutique en ligne ou l'adaptation approfondie d'un thème existant pour qu'il corresponde parfaitement à votre identité de marque. Chez votre <a href="{{ path('app_home') }}" title="développeur web en île de France" class="link-accent-color">webmaster freelance à Paris</a>, chaque projet est unique et fait l'objet d'un accompagnement sur mesure. C'est pourquoi il est difficile de donner un tarif fixe sans une étude préalable de votre projet.</p>
+
+    <h3 class="fst-italic secondary-color text-center">Le tarif minimum pour un site e-commerce</h3>
+
+    <p class="font-size-standard line-height-standard mt-3 mb-3 col-md-8 m-auto primary-color">Pour vous donner une première indication et pour un projet de création de boutique en ligne avec les fonctionnalités essentielles, l'investissement de départ se situe généralement à partir de <b>1 500 € TTC</b>. Ce budget permet de couvrir les bases nécessaires pour lancer votre e-commerce sereinement et commencer à vendre.</p>
+
+    <h4 class="text-center primary-color fw-bold fst-italic mb-4">Ce que comprends le tarif de base pour la création d'un site e-commerce</h4>
+
+    <ul class="col-md-8 col-lg-6 m-auto secondary-color fw-semibold">
+    {% for li in page_data.price %}
+    <li class="mt-3 mb-3"><i class="{{ li.i }} primary-color-dark me-3"></i>{{ li.li }}</li>
+    {% endfor %}
+    </ul>
+
+</section>
+
+<section class="section-faq bg-grey-light pt-4 pb-4 ps-2 pe-2">
+
+<h2 class="primary-color mb-4 text-center"> FAQ : Questions fréquentes sur la création de boutique en ligne </h2>
+
+<div class="accordion" id="accordionECommerce">
+
+{% for key, accordion in page_data.accordions %}
+
+  <div class="accordion-item col-lg-6 col-md-8 m-auto">
+    <h3 class="accordion-header">
+      <button class="accordion-button collapsed primary-color" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ key }} " aria-expanded="true" aria-controls="collapseOne">
+       {{ accordion.title }} 
+      </button>
+    </h3>
+    <div id="collapse{{ key }}" class="accordion-collapse collapse " data-bs-parent="#accordionECommerce">
+      <div class="accordion-body line-height-standard">
+        {{ accordion.content }}
+      </div>
+    </div>
+  </div>  
+
+
+{% endfor %}
+</div>
+
+</section>
+
+<section class="section-portfolio section-portfolio bg-gradient-diagonal-secondary-color-light pt-2 pb-3">
+
+     <h2 class="text-center primary-color mb-3 mt-3 fw-bold">Exemples de sites E-commerce réalisés pour des entreprises en île-de-France</h2>
+
+    <p  class="text-center col-lg-7 m-auto mb-3 fst-italic fw-semibold ">
+        Découvrez des sites vitrines réalisés pour des clients à Paris, Houilles, Neuilly-sur-Seine, Versailles et dans toute l’Île-de-France.
+    </p>
+
+    <a href="{{ path('app_portfolio' ,{page : 1}) }}" class="btn-grow d-block m-auto col-lg-4 text-center mb-3 text-decoration-none">Voir plus des réalisations de site E-commerce</a>
+
+
+    <p class="text-center col-lg-7 m-auto mb-3 fw-semibold">
+    Découvrez un exemple de sites E-commerce (maquette) que j’ai conçus pour une entreprise locale :
+    Chaque projet est réalisé sur mesure selon les besoins du client.
+    </p>
+
+    {% include 'front/example_portfolio.html.twig' %}
+
+</section>
+
+
+
+   
+
+{% endblock %}
+

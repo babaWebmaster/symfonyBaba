@@ -13,10 +13,14 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;          // Pour les champs
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;    // Pour les champs texte longs (description, ogDescription, schemaJson)
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;       // Pour le champ entityId
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;          // Pour créer des sections (panneaux) dans le formulaire
-
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField; // Pour 
 // Importations pour la gestion manuelle de la persistance (persistEntity, updateEntity)
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext; // Nécessaire pour getContext()->getRequest()
+use App\Enum\FollowGoogle;
+use App\Enum\IndexGoogle;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PostCrudController extends AbstractCrudController
 {
@@ -88,6 +92,27 @@ class PostCrudController extends AbstractCrudController
             ->setLabel('OG Image URL')
             ->setRequired(false)
             ->setHelp('URL de l\'image à afficher lors du partage sur les réseaux sociaux.');
+
+        yield ChoiceField::new('seoMetadata.followGoogle')
+        ->setFormType(ChoiceType::class)
+        ->setChoices([
+            'Suivre' => FollowGoogle::FOLLOW,
+            'Ne pas suivre' => FollowGoogle::NOFOLLOW,            
+        ])
+        ->setFormTypeOption('choice_value', fn (?FollowGoogle $e) => $e?->value)
+        ->renderExpanded(false)
+        ->setRequired(false);
+
+        yield ChoiceField::new('seoMetadata.indexGoogle')
+        ->setFormType(ChoiceType::class)
+        ->setChoices([
+            'Indexer' => IndexGoogle::INDEX,
+            'Ne pas indexer' => IndexGoogle::NOINDEX,
+            ])
+        ->setFormTypeOption('choice_value', fn (?IndexGoogle $e) => $e?->value)
+        ->renderExpanded(false)
+        ->setRequired(false);
+        
 
         yield TextareaField::new('seoMetadata.schemaJson')
             ->setLabel('Schema JSON')

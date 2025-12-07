@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
 {
@@ -22,6 +23,7 @@ class Post
     #[ORM\Column(nullable: true)]
     private ?int $entityId = null;
 
+       
     #[ORM\OneToOne(mappedBy: 'post', targetEntity: SeoMetadata::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private ?SeoMetadata $seoMetadata = null;
 
@@ -65,6 +67,7 @@ class Post
 
         return $this;
     }
+   
 
     public function getSeoMetadata(): ?SeoMetadata
     {

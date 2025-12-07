@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<section class="section-creation-vitrine pt-3 pb-5" data-controller="lazy-background"
+ {% if background_creation_vitrine.image_object is defined %}
+  data-lazy-background-mobile-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_creation_vitrine.image_object.formats.small) }}"
+  data-lazy-background-ipad-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_creation_vitrine.image_object.formats.medium) }}" 
+  data-lazy-background-desktop-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(background_creation_vitrine.image_object.formats.large) }}"
+  {% endif %}>
+    <h1 class="primary-color fw-bold text-center">Création de site vitrine professionnel à Paris</h1>
+
+    <div class="mt-5 mb-5 container-hook ps-3 pe-3 pt-3 pb-3 primary-color font-size-standard fw-semibold">
+
+         <h2 class="secondary-color">Un site vitrine moderne et optimisé pour le SEO en île de France</h2>
+
+        <p>Attirez de nouveaux clients grâce à un site clair, rapide et pensé pour Google. Freelance en Île-de-France, je crée des sites sur-mesure qui mettent en valeur votre activité.</p>
+    </div>
+
+    <div class="d-flex container-button-form justify-content-center">
+        <a class="btn btn-form text-center bg-accent-color d-block pt-2 pb-2 ps-4 pe-4 fs-4 primary-color fw-bold" href="{{ path('app_contact_devis') }}" role="button" title="Demandez un devis pour un site vitrine">Devis gratuit: site vitrine à Paris</a>
+    </div>
+</section>
+
+<section class="section-feature pt-5 pb-5">
+
+    <h2 class="primary-color text-center mt-5 mb-5 fw-bold">Les avantages d’un site vitrine professionnel pour votre entreprise en Île-de-France (Paris et alentours)</h2>
+
+    <div class="container-feature d-flex flex-wrap justify-content-center">
+        {% for feature in page_data.features %}
+            <div class="col-md-6 ms-3 me-3">
+                <h3 class="bg-primary-color ps-4 pt-2 pb-2 mb-0 text-color-inverted fw-bold fst-italic">{{ feature.title }}</h3>
+                <div class="container-paragraphs bg-gradient-diagonal-secondary-color-light color-black pt-2 pb-2 ps-4 pe-4 mb-5 fw-semibold">
+                {% for  paragraph in feature.paragraphs %}
+                <p>{{ paragraph | raw}}</p>
+
+                {% endfor %}
+                {% if feature.p is defined %}
+                <p>{{feature.p}}<a class="link-primary-hover-dark" href="{{ path(feature.nameRoute)}}" title="{{feature.titleAnchor}}">{{feature.anchor}}</a></p> 
+                {% endif %}
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+  <div class="d-flex justify-content-center">  
+        <a class="btn btn-blue" href="{{ path('app_contact_devis') }}" role="button" title="Devis par un créateur de site vitrine à Paris"> Devis gratuit pour un site web vitrine </a>    
+  </div>
+</section>
+
+<section class="section-process pt-5 pb-5 bg-accent-color bg-off-white">
+
+    <h2 class="primary-color fw-bold text-center">Mes services de création de site vitrine sur mesure à Paris</h2>
+    <div class="container-process d-flex flex-wrap justify-content-center">
+        {% for process in page_data.process %}
+        <div class="bg-accent-color-light col-md-5 ms-2 me-2 mt-2 mb-2">
+            <h3 class="bg-accent-color pt-2 pb-2 ps-4 pe-4 text-color-inverted fw-bold fst-italic">{{ process.title }}</h3>
+            {% for paragraph in process.paragraphs %}
+
+                <p class="pt-4 pb-4 pe-4 ps-4 primary-color fw-semibold">{{ paragraph }}</p>
+
+            {% endfor %} 
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="section-portfolio section-portfolio bg-grey-light pt-2 pb-3">
+
+     <h2 class="text-center primary-color mb-3 mt-3 fw-bold">Exemples de sites vitrines ou maquette réalisés pour des entreprises en île-de-France</h2>
+
+    <p  class="text-center col-lg-7 m-auto mb-3 fst-italic fw-semibold ">
+        Découvrez des sites vitrines réalisés pour des clients à Paris, Houilles, Neuilly-sur-Seine, Versailles et dans toute l’Île-de-France.
+    </p>
+
+    <a href="{{ path('app_portfolio' ,{page : 1}) }}" class="btn-grow d-block m-auto col-lg-4 text-center mb-3 text-decoration-none">Voir plus des réalisations de site vitrine</a>
+
+
+    <p class="text-center col-lg-7 m-auto mb-3 fw-semibold">
+    Découvrez trois exemples de sites vitrine que j’ai conçus pour des entreprises locales :
+    Chaque projet est réalisé sur mesure selon les besoins du client.
+    </p>
+
+    {% include 'front/example_portfolio.html.twig' %}
+
+</section>
+   
+
+{% endblock %}
+

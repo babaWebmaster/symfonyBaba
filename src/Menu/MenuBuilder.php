@@ -1,5 +1,5 @@
 <?php
-// src/Menu/MenuBuilder.php
+
 namespace App\Menu;
 
 use Knp\Menu\Attribute\AsMenuBuilder; 
@@ -37,10 +37,29 @@ class MenuBuilder
         $menu->addChild('Création site e commerce', ['route' => 'app_creation_site_commerce']) 
         ->setAttribute('class', 'nav-item')
         ->setLinkAttribute('class','nav-link');
+       
+        $menu->addChild('Réalisations', [
+        'route' => 'app_portfolio',
+        'routeParameters' => ['page' => 1]
+        ])
+        ->setAttribute('class', 'nav-item')
+        ->setLinkAttribute('class', 'nav-link');
+
         $menu->addChild('Contact', ['route' => 'app_contact_devis'])
          ->setAttribute('class', 'nav-item')
         ->setLinkAttribute('class','nav-link');
+
         
+
+
+        //active sur une réalisation 
+        $menu['Réalisations']->setExtra('routes', [
+        ['route' => 'app_portfolio'],
+        ['route' => 'app_portfolio_slug']
+        ])
+        ->setAttribute('class', 'nav-item')
+        ->setLinkAttribute('class','nav-link');
+
        
        
         return $menu;

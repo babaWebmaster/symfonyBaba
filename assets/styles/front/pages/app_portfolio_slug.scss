@@ -1,0 +1,18 @@
+@use "sass:color";
+
+@use "../../abstracts/index" as *;
+
+
+
+.container-site{
+    .carousel-inner{
+        img{
+
+            width: 100%;        }
+    }
+    .wrapper-description{
+        h2{
+            color:$secondary-color;
+        }
+    }
+}

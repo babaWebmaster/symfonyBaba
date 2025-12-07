@@ -1,0 +1,28 @@
+<div class="wrapper-vignette d-flex flex-column">
+
+
+{% if maquettes is defined %}
+
+    {% for maquette in maquettes %}
+
+        {% set url = path('app_portfolio_slug', {'slug': maquette.slug}) %}
+        
+         <div class="wrapper-vignette bg-gradient-duotone ps-2 pe-2 pt-3 pb-3 col col-sm-9 col-md col-lg-7  mb-5 m-auto justify-content-center"> 
+            
+           
+                
+                    <h3 class="fw-bold text-center secondary-color">{{ maquette.subtitle }}</h3>
+               
+                    <p class="text-color-inverted text-center">{{ maquette.shortDescription }}</p>
+                 
+                
+                    {% if images[maquette.id] is defined %}
+                    {{ images[maquette.id]['htmlImage']|raw }}
+                    {% endif %} 
+            
+       <a class="d-block btn-border-animated mt-3 text-center col-6 m-auto" href="{{ url }}">En savoir plus sur ce site {{ maquette.type }}  </a>
+    </div>
+    {% endfor %}
+
+{% endif %}
+ </div>

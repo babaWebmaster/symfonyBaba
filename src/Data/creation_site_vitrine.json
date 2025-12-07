@@ -1,0 +1,93 @@
+{
+  "features": [
+    {
+      "title": "Touchez vos clients parisiens avec un site vitrine optimisé",
+      "paragraphs": [
+        "Un site vitrine permet à votre entreprise d’apparaître sur Google lorsqu’un prospect recherche vos services à Paris."
+              ],
+       "titleAnchor":"Webmaster freelance à Paris",
+       "nameRoute":"app_home",
+       "anchor":"accompagnement personnalisé",
+       "p":"Pour être visible localement bénéficiez d' un "
+    },
+    {
+      "title": " Valorisez votre image professionnelle",
+      "paragraphs": [
+        "Un site vitrine bien conçu inspire confiance et crédibilité, des éléments essentiels pour convaincre vos prospects parisiens."
+        ],
+      "titleAnchor":"Création site Wordpress à Paris",
+       "nameRoute":"app_creation_site_wordpress",
+       "anchor":"création Wordpress",
+       "p":"Vous bénéficierez d'un design moderne et facile à gérer grâce à la "
+    },
+    {
+      "title": "Générez des contacts et des demandes de devis",
+      "paragraphs": [
+        "Un site vitrine professionnel comprend des formulaires de contact et des appels à l’action clairs pour transformer vos visiteurs en clients."
+      ],
+      "titleAnchor":"Contact webmaster freelance à Paris",
+       "nameRoute":"app_contact_devis",
+       "anchor":"contact",
+       "p":"Invitez vos prospects à vous joindre facilement via la page  "
+    },
+    {
+      "title": "Développez votre activité en ligne sans limite géographique",
+      "paragraphs": [
+        "Un site vitrine vous permet de dépasser le bouche-à-oreille traditionnel et de trouver des clients partout en Île-de-France et au-delà."
+      ],
+      "titleAnchor":"Webmaster freelance à Paris",
+       "nameRoute":"app_creation_site_commerce",
+       "anchor":"évolutive vers l'e-commerce",
+       "p":"Votre présence peut grandir en même temps que votre entreprise avec un site "
+    },
+    {
+      "title": "Un outil de communication disponible 24h/24 à Paris",
+      "paragraphs": [
+        "Votre site vitrine présente vos services et vos coordonnées en continu, même lorsque votre entreprise est fermée.",
+        "Vos prospects trouvent l’information à tout moment, sans effort supplémentaire de votre part."
+      ]
+    },
+    {
+      "title": "Un investissement rentable et durable",
+      "paragraphs": [
+        "Un site vitrine bien pensé continue à attirer des visiteurs et des prospects pendant des années, contrairement aux campagnes publicitaires ponctuelles."
+      ],
+      "titleAnchor":"Webmaster freelance à Paris",
+       "nameRoute":"app_contact_devis",
+       "anchor":"webmaster freelance",
+       "p":"Maîtrisez vos coûts tout en obtenant un résultat professionnel avec "
+    }
+  ],
+  "process": [
+    {
+      "title": "Analyse approfondie de vos besoins",
+      "paragraphs": [
+        "Ensemble, nous définissons les objectifs de votre site vitrine . J'explore votre activité, votre audience cible et vos inspirations pour m'assurer que le résultat final corresponde parfaitement à votre vision et à vos besoins. Nous viserons le meilleur résultat à Paris et la région parisienne."
+      ]
+    },
+    {
+      "title": "Conception et maquettage de votre site vitrine",
+      "paragraphs": [
+        "Sur base de l'analyse, je conçois des maquettes que nous validons ensemble. Ces représentations visuelles vous permettent de visualiser l'agencement et le design de votre site vitrine avant le développement."
+      ]
+    },
+    {
+      "title": "Développement et intégration du site vitrine",
+      "paragraphs": [
+        "Je développe votre site vitrine en veillant à sa compatibilité sur tous les appareils (ordinateurs, tablettes, smartphones) pour une expérience utilisateur optimale à Paris et ailleurs. J'utilise les langages de programmation et les CMS adaptés à votre projet (HTML,ccs,JavaScript,wordpress,ect..)"
+      ]
+    },
+    {
+      "title": "Optimisation du référencement SEO",
+      "paragraphs": [
+        "J'optimise la structure, le contenu et les aspects techniques de votre site vitrine pour améliorer sa visibilité sur les moteurs de recherche comme Google, et attirer ainsi des clients potentiels à Paris et sa région."
+      ]
+    },
+    {
+      "title": "Mise en ligne de votre site vitrine",
+      "paragraphs": [
+        "Je me charge de l'installation de votre site vitrine sur l'hébergement de votre choix et m'assure de son bon fonctionnement pour un lancement réussi. Je transfère l'ensemble des fichiers nécessaire à son bon fonctionnement. Que vous soyez à Paris ou à l'autre bout du monde,votre site sera en ligne."
+      ]
+    }
+  ]
+}

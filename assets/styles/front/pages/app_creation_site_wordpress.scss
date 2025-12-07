@@ -1,0 +1,76 @@
+@use "sass:color";
+//@use "../utils/utilities" as *;
+@use "../../abstracts/index" as *;
+.section-presentation{
+    background-attachment: fixed;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+
+    &::before{
+        top:0;
+        left:0;
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background:linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4));
+    }
+
+    h1{
+        text-shadow: 1px 1px 2px white;
+    }
+
+    .hook-wordpress{
+         background-color: rgba(244, 244, 244, 0.8);
+    }
+
+    
+}
+
+.section-why{
+    .container-why{
+        .why{
+            h3{
+                position:relative;
+                &::before{
+                    content: "";
+                    width: 100%;
+                    height: 5px;
+                    background-color: $primary-color;
+                    bottom: -10px;
+                    left: 0;
+                    position: absolute;
+                }
+            }
+        }
+    }
+}
+
+.section-step{
+    .container-steps{
+        .step{
+            border-radius: 20px;
+            h3{
+                border-radius: 20px;
+
+                .polygone{
+                    path{
+                        fill:$secondary-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.section-type-site{
+    .container-type-site{
+        .type-site{
+            border-radius: 20px;
+        }
+    }
+}

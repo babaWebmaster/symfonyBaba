@@ -1,0 +1,47 @@
+  {# <<< CE BLOC EST LE SEUL ET UNIQUE ENDROIT POUR LE SEO GLOBAL >>> #}
+    {% block head_meta %}
+      
+
+    {% if seoPost is defined and seoPost %} 
+        {# --- APPLICATION DES DONNÉES SEO SI seoPost EST PRÉSENT ET VALIDE --- #}
+        {% if seoPost and seoPost.seoMetadata %}
+            {# Titre : prend la priorité sur le block('title') si renseigné #}
+            <title>{{ seoPost.seoMetadata.title ?: block('title') }}</title>
+            <meta name="description" content="{{ seoPost.seoMetadata.description ?: block('description') }}">
+
+            {# Open Graph Tags #}
+            <meta property="og:title" content="{{ seoPost.seoMetadata.ogTitle ?: seoPost.seoMetadata.title ?: block('title') }}">
+            <meta property="og:description" content="{{ seoPost.seoMetadata.ogDescription ?: seoPost.seoMetadata.description ?: block('description') }}">
+            {% if seoPost.seoMetadata.ogImage %}
+                <meta property="og:image" content="{{ seoPost.seoMetadata.ogImage }}">
+            {% endif %}
+            {% if seoPost.seoMetadata.indexGoogle and seoPost.seoMetadata.followGoogle %}
+                <meta name="robots" content="{{seoPost.seoMetadata.indexGoogle.value}},{{seoPost.seoMetadata.followGoogle.value}}">
+                <meta name="googlebot" content="{{seoPost.seoMetadata.indexGoogle.value}},{{seoPost.seoMetadata.followGoogle.value}}">               
+            {% endif %}
+
+            
+
+            {# Schema.org JSON-LD #}
+            {% if seoPost.seoMetadata.schemaJson %}
+                <script type="application/ld+json">
+                    {{ seoPost.seoMetadata.schemaJson|raw }}
+                </script>
+            {% endif %}
+        {% endif %}
+
+        {% else %}
+        {# Valeurs par défaut si seoPost n'est pas fourni ou n'a pas les données #}
+        <title>{% block title %}Mon Site Web{% endblock %}</title> {# Un block title pour le fallback #}
+        <meta name="description" content="Découvrez nos articles, services et bien plus.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ app.request.uri }}">
+        <meta property="og:image" content="{{ asset('path/to/default/og-image.jpg') }}"> {# Remplacez par votre image par défaut #}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="robots" content="index, follow">
+        <meta name="googlebot" content="index, follow">
+        <meta name="twitter:image" content="{{ asset('path/to/default/twitter-image.jpg') }}"> {# Remplacez par votre image par défaut #} 
+     {% endif %}
+
+    {% endblock %}
+    {# <<< FIN DU BLOC SEO PRINCIPAL >>> #}

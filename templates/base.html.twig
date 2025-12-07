@@ -1,8 +1,28 @@
-{# templates/base.html.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        {% include 'front/head.html.twig' %}
+    </head>
+    <body data-controller="margin-top-main">
+        <header>
+            {% include 'front/header.html.twig' %}
+        </header>
 
- {% include 'front/header.html.twig' %}
+        <main data-margin-top-main-target="mainContent">
+            {% block body %}{% endblock %}
+        </main>
 
-   
-    {% block body %}{% endblock %}
+         <footer class="d-flex flex-lg-row flex-column justify-content-around pt-5 pb-5"  data-controller="lazy-background"
+         {% if backgroundFooter.image_object is defined %} 
+          data-lazy-background-mobile-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(backgroundFooter.image_object.formats.small) }}" 
+          data-lazy-background-ipad-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(backgroundFooter.image_object.formats.medium) }}" 
+          data-lazy-background-desktop-background-url-value="{{ APP_ASSET_UPLOAD_IMAGE ~ asset(backgroundFooter.image_object.formats.large) }}"
+          {% endif %}
+          >
+            {% include 'front/footer.html.twig' %}
+        </footer>
 
-{% include 'front/footer.html.twig' %}
+        
+                
+    </body>
+</html>

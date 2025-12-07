@@ -1,0 +1,94 @@
+{
+    "features":[
+        {"title":"Un webmaster freelance e-commerce à Paris dédié à votre projet",
+         "paragraphs":"En tant que développeur freelance e-commerce dans la capitale, ma mission est de vous accompagner personnellement dans la création de votre boutique en ligne. Au-delà de l'aspect technique, mon approche est résolument axée sur les résultats : transformer vos visiteurs en clients. Cela passe par une stratégie SEO e-commerce rigoureuse, des optimisations pour une visibilité maximale sur Google, et la mise en place d'un parcours client intuitif, garantissant que votre site e-commerce devienne un véritable levier de croissance et de conversion pour votre activité."   
+        },
+        {"title":"Expérience Utilisateur (UX) et Design Responsive : un e-commerce moderne",
+         "paragraphs":"Un site e-commerce performant se distingue par une navigation intuitive et agréable, quelle que soit la taille de l'écran. Je conçois des interfaces modernes et épurées pour votre boutique en ligne, avec un design responsive impeccable, assurant un affichage parfait sur ordinateur, tablette et smartphone. L'expérience utilisateur (UX) est au cœur de ma démarche : chaque élément est pensé pour faciliter le parcours d'achat, de la découverte du produit à la finalisation de la commande. Votre identité visuelle est respectée et sublimée, créant un environnement de confiance qui incite à l'achat."   
+        },
+        {"title":"Boutique en Ligne 24/7 : Votre commerce ouvert sans interruption",
+         "paragraphs":"Contrairement à un commerce physique, votre boutique en ligne ne connaît ni horaires d'ouverture ni jours fériés. Votre site e-commerce est accessible 24h/24 et 7j/7, offrant une flexibilité totale à vos clients. Cette disponibilité continue vous permet de capter des ventes à tout moment, d'atteindre une clientèle bien plus large, au-delà des frontières de Paris et de l'Île-de-France, et d'assurer une croissance constante de votre activité. C'est la liberté de vendre et d'être présent sur le marché sans les contraintes habituelles, maximisant ainsi vos opportunités de chiffre d'affaires."   
+        },
+        {"title":"Stratégie SEO E-commerce : Conquérez les premières positions sur Google",
+         "paragraphs":"Le référencement naturel (SEO) est le pilier de la réussite pour toute boutique en ligne. Au-delà d'un beau design, votre site e-commerce doit être trouvé par vos futurs clients. Je mets en œuvre une stratégie SEO e-commerce complète, incluant l'optimisation des fiches produits avec les bons mots-clés, le balisage schema.org pour une meilleure interprétation par Google (avis, prix, stock), l'amélioration de la vitesse de chargement et un maillage interne intelligent. L'objectif est clair : positionner votre boutique en ligne sur les premières pages de Google pour générer un trafic qualifié et maximiser vos ventes en ligne à Paris, en Île-de-France et au-delà."   
+        },
+        {"title":"Un site e-commerce adapté à votre secteur",
+         "paragraphs":"Chaque secteur d'activité possède ses propres spécificités, ses défis et ses opportunités uniques. Que vous soyez dans la mode, l'alimentation, les services, l'artisanat ou tout autre domaine à Paris et en Île-de-France, votre boutique en ligne doit être conçue pour refléter et servir au mieux les particularités de votre marché. J'analyse vos besoins spécifiques, les comportements de votre clientèle cible et les tendances de votre secteur pour créer un site e-commerce sur mesure. L'objectif est de vous fournir une plateforme parfaitement alignée avec votre business model, vos produits et votre image de marque, garantissant ainsi pertinence et performance."   
+        },
+        {"title":"Sécurité et Maintenance : Assurer la pérennité et l'évolution de votre E-commerce",
+         "paragraphs":"Pour garantir le bon fonctionnement et l'évolution constante de votre boutique en ligne, un suivi régulier est indispensable. En tant que webmaster e-commerce, je vous propose des services de maintenance adaptés incluant les mises à jour techniques, la sécurité de votre site web contre les menaces, et l'optimisation des performances pour une vitesse de chargement optimale. Au-delà de l'entretien technique, je vous apporte également des conseils en marketing digital pour faire évoluer votre stratégie et maximiser le potentiel de votre site e-commerce à Paris. Votre investissement est protégé et votre commerce en ligne continue de prospérer en toute sérénité."   
+        }
+    ],
+    "cms":[
+        {
+            "title":"La puissance de WordPress au service de votre E-commerce",
+            "paragraphs":"WooCommerce est le plugin e-commerce le plus populaire au monde, transformant <a href='/creation-site-wordpress-paris' title='création de site wordPress' class='link-primary-color-hover-white' >votre site WordPress</a> en une boutique en ligne complète et modulable. Idéal pour les PME, les créateurs et les entreprises souhaitant une gestion intuitive.<br><br>WooCommerce offre une flexibilité inégalée. Grâce à la richesse de son écosystème d'extensions et de thèmes, nous pouvons créer une boutique en ligne sur mesure, parfaitement adaptée à vos besoins spécifiques et facile à administrer au quotidien. C'est la solution par excellence pour allier puissance du CMS et simplicité d'utilisation pour votre e-commerce à Paris."            
+        },
+        {
+            "title":"Prestashop pour des boutiques e-commerce ambitieuses",
+            "paragraphs":"PrestaShop est une solution e-commerce open-source dédiée à la création de boutiques en ligne professionnelles. Reconnu pour sa robustesse et sa richesse fonctionnelle, PrestaShop est particulièrement adapté aux entreprises avec des catalogues produits étendus ou des besoins spécifiques en matière de gestion de stock, de logistique et de marketing.<br><br> Bien que sa prise en main puisse sembler plus technique que WooCommerce pour les non-initiés, PrestaShop offre une flexibilité et une puissance exceptionnelles pour des projets ambitieux."            
+        }
+    ],
+    "price": [
+        {
+            "li": "Installation et configuration de base CMS (wooCommerce ou Prestashop)",
+            "i": "bi-gear"
+        },
+        {
+            "li": "L' intégration et l' adaptation d'un thème standard (non sur mesure)",
+            "i": "bi-palette"
+        },
+        {
+            "li": "La configuration des modes de paiement essentiels (ex : carte bancaire via stripe/PayPal, virement",
+            "i": "bi-credit-card"
+        },
+        {
+            "li": "La mise en place des modes de livraison de base",
+            "i": "bi-truck"
+        },
+        {
+            "li": "La création des catégories et sous-catégories de produits",
+            "i": "bi-tags"
+        },
+        {
+            "li": "Intégration d'un nombre limité de produits (10 à 20)",
+            "i": "bi-box"
+        },
+        {
+            "li": "La création des pages indispensables (Mention légales, CGV, Politique de confidentialité)",
+            "i": "bi-file-earmark"
+        },
+        {
+            "li": "Formulaire de contact",
+            "i": "bi-envelope"
+        },
+        {
+            "li": "Un design responsive de base (optimisé pour mobiles et tablettes)",
+            "i": "bi-phone-vibrate"
+        },
+        {
+            "li": "Une formation rapide à l'administration de votre back-office pour la gestion quotidienne",
+            "i": "bi-mortarboard"
+        }
+    ],
+    "accordions": [
+        {
+            "title": "Combien de temps faut il pour créer un site e-commerce ?",
+            "content": "Le délai de création d'un site e-commerce varie en fonction de la complexité de votre projet, du nombre de produits, des fonctionnalités spécifiques et de la réactivité de votre part pour la fourniture des éléments (textes, photos, accès...). Pour une boutique en ligne standard avec les fonctionnalités essentielles, comptez généralement entre 4 à 8 semaines à partir de la validation du devis et la réception de tous les contenus nécessaires. Un projet plus complexe avec des développements sur mesure ou un très grand catalogue pourra prendre plus de temps. Lors de notre premier échange, je serai en mesure de vous fournir un calendrier prévisionnel détaillé."
+        },
+        {
+            "title": "Vais-je être autonome pour gérer ma boutique après la livraison ?",
+            "content": "Absolument. Une fois votre site e-commerce livré, je vous fournirai les accès et une formation complète pour prendre en main le tableau de bord. Vous serez capable de gérer les produits, les commandes, les clients et de mettre à jour le contenu de votre site en toute autonomie. Je reste bien sûr disponible pour un accompagnement continu en cas de besoin ou pour des évolutions futures."
+        },
+        {
+            "title": "Est-ce que je serais propriétaire de mon site e-commerce ?",
+            "content": "Oui, absolument. Dès la livraison et le paiement intégral de votre boutique en ligne, vous en devenez l'unique propriétaire. Cela inclut le nom de domaine, l'hébergement, la base de données et tous les fichiers du site. Je vous fournirai l'ensemble des accès nécessaires pour une autonomie totale. Mon rôle est de créer un actif digital qui vous appartient pleinement, vous garantissant une liberté totale pour l'évolution future de votre e-commerce. Si vous le souhaitez, en tant que webmaster freelance, je pourrais toujours vous assurer la maintenance de votre boutique e-commerce."
+        },
+        {
+            "title": "Faut-il prévoir un budget marketing après la création du site ?",
+            "content": "Oui, la création de votre site e-commerce est la première étape vers la réussite, mais ce n'est pas la dernière. Pour attirer des visiteurs qualifiés et générer des ventes, il est essentiel de prévoir un budget marketing digital continu. Cela peut inclure des campagnes de référencement payant (SEA) comme Google Ads pour une visibilité immédiate, une présence active sur les réseaux sociaux pour engager votre audience, ou des actions d'e-mail marketing pour fidéliser vos clients et stimuler les ventes. Le développement d'une stratégie de contenu SEO via le blog ou l'optimisation continue de vos fiches produits est également crucial pour un référencement organique durable. Je vous conseille sur les meilleures approches et stratégies pour maximiser la visibilité de votre boutique en ligne et atteindre vos objectifs commerciaux après le lancement."
+        }
+
+    ]
+    
+}

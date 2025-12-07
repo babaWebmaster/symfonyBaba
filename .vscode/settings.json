@@ -1,0 +1,19 @@
+{
+     "editor.wordWrap": "on",
+     //"editor.rulers": [80],
+     "editor.wordWrapColumn": 80,
+     "editor.scrollbar.horizontal": "hidden",
+
+
+    "cSpell.language": "fr,en",
+    "cSpell.enabledLanguageIds": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "html",
+        "css",
+        "scss",
+        "javascript",
+        "twig"
+    ],
+}

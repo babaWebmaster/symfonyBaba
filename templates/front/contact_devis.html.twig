@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<section class="section-form pt-3 pb-3 bg-gradient-diagonal-secondary-color-light">
+
+      <h1 class="primary-color text-center fw-semibold ">Contactez votre webmaster freelance à Paris et en Île de France</h1>
+
+             
+             <turbo-frame id="contact_form">
+                {% include 'front/contact_form.html.twig' with { contactForm: contactForm } %}
+              </turbo-frame>
+              
+   
+</section>
+{% endblock %}
+
+

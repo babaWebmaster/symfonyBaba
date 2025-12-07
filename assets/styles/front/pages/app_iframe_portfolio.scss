@@ -1,0 +1,25 @@
+@use "sass:color";
+
+@use "../../abstracts/index" as *;
+
+.iframe-container{
+    height : 100vh;
+    width: 100%;
+
+    iframe{
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}
+
+.btn-back{
+    position: absolute;
+    background-color: rgba($secondary-color, 0.8);
+    color : $primary-color;
+    transition: all 0.5s;
+    &:hover{
+        background-color: rgba($primary-color,1);
+        color : $secondary-color;
+    }
+    }

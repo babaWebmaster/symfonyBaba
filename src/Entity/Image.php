@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
 #[Vich\Uploadable]
@@ -21,6 +23,10 @@ class Image
     private ?string $fileName = null;
 
     #[Vich\UploadableField(mapping: 'image_upload', fileNameProperty: 'fileName')] // <<< ICI !
+    #[Assert\File(
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+        mimeTypesMessage: 'Seuls les fichiers JPG, PNG ou WEBP sont autorisés.'
+    )]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -34,6 +40,8 @@ class Image
 
     #[ORM\Column(type: 'json', nullable: true)]
     private ?array $formats = null;
+
+   
 
     public function getId(): ?int
     {
